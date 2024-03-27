@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .disable {
+        pointer-events: none;
+    }
+
+    table,
+    tr,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+
+    }
+
+
+    a {
+        text-decoration: none;
+        color: black;
+        font-size: 17px;
+
+    }
+
+    .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    button {
+        padding: 5px;
+    }
+
+    table {
+        margin: 20px;
+        width: 90%;
+    }
+
+    td {
+        padding: 5px;
+        width: 20px;
+
+    }
+
+    .s1 {
+        text-align: center;
+        color: brown;
+    }
+
+    .p1 {
+        background-color: rgb(248, 219, 182);
+        font-size: larger;
+        color: black;
+        font-style: italic;
+        font-weight: 100;
+        text-align: center;
+    }
+
+    .h1 {
+        text-align: center;
+    }
+
+    /* .p2
+    {
+        text-align: center;
+    } */
+</style>
+</style>
+
+<body>
+    <h1 class="h1">yashvi soladhra</h1>
+    <select name="select" id="select" class="select1" style="margin: 20px;">
+        <!-- <option value="">select option</option> -->
+        <option data-month="<%=month%>" value="2023-12-30">December-2023</option>
+        <option data-month="<%=month%>" value="2024-01-31">Jan-2024</option>
+        <option data-month="<%=month%>" value="2024-02-28">Fab-2024</option>
+
+    </select>
+    <table>
+
+
+        <tr class="p1">
+            <td>studentid</td>
+
+            <td>studentname</td>
+            <!-- <td>studentatendence</td> -->
+
+            <td>attendence</td>
+            <td>percentage of attendance</td>
+
+        </tr>
+
+        <tr>
+            <% result.forEach(item=>
+                {%>
+        <tr class="p2">
+            <td>
+                <%= item.studentid %>
+            </td>
+            <td>
+                <%=item.student_name%>
+            </td>
+            <td>
+                <%= item.attendensh%>
+            </td>
+            <td>
+                <%= item.percentage%>
+
+            </td>
+
+
+
+
+        </tr>
+        <% }); %>
+            </tr>
+
+
+
+    </table>
+    <div class="box">
+
+        <div>
+            <button class=<%=page==1? "disable" :"" %> >
+                <a href="/attendance/page/?page=<%=1%>&select=<%=select%>">
+                    << </a>
+            </button>
+        </div>
+        <div>
+            <button class=<%=page-1<1 ? "disable" :"" %>>
+                <a href="/attendance/page/?page=<%=page-1%>&select=<%=select%>">
+                    < </a>
+            </button>
+        </div>
+        <div>
+            <p>
+                <%= page %>
+            </p>
+        </div>
+        <div>
+            <button class=<%=page+1>lastpage ? "disable":"" %> >
+                <a href="/attendance/page/?page=<%=page+1%>&select=<%=select%>">
+                    > </a>
+            </button>
+        </div>
+        <div>
+            <button class=<%=page==lastpage ? "disable" :"" %> >
+                <a href="/attendance/page/?page=<%=lastpage%>&select=<%=select%>"> >> </a>
+            </button>
+        </div>
+
+
+
+
+</body>
+<script>
+    let select = document.getElementById("select");
+    let selects = select.options;
+    select.addEventListener("change", function () {
+        window.location.href = window.location.origin + window.location.pathname + `?page=1&select=${select.value}`
+    })
+
+    console.log(selects);
+    for (let i = 0; i < selects.length; i++) {
+        if (Number(selects[i].value.split("-")[1]) == (selects[i].dataset.month)) {
+            console.log(selects[i].dataset.month);
+            selects[i].selected = true;
+        }
+
+    }
+</script>
+
+</html>

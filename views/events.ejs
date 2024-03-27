@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id1
+        {
+            border-color: black;
+            border: 2px solid ;
+           
+        }
+        .div
+        {
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body >
+    <H4 style="text-align: center;">YASHVI SOLADHRA</H4>
+    <H4 style="text-align: center;">
+        EMPLOYEE ID =24DEV097
+    </H4>
+    <Table style="border: 2px solid black;  border-collapse: collapse; align-items: center;">
+        <tr>
+            <td id="id1" style="background-color: antiquewhite;"> <button onclick="alert('Hello')">Click me.</button> <h6 style="color: grey;">
+                 onclick in button
+            </p></td>
+
+            <td id ="id1"><h2 onclick="this.innerHTML='hello'">Click text</h2> <h6>
+                 onclick in text
+            </p></td>
+
+            <td id ="id1" >
+                <script>
+                function upperCase() {
+                  const x = document.getElementById("fname");
+                  x.value = x.value.toUpperCase();
+                }
+                </script>
+                name: <input type="text" id="fname" oninput="upperCase()">
+                <h6 >oninput use to upperCase</p>
+                </td>
+                
+
+            <td id ="id1">
+                <div onmouseover="mOver(this)" onmouseout="mOut(this) " style="color: rgb(199, 48, 154);">Thank you</div>
+                <script>
+                    function mOver(obj) {
+                        obj.innerHTML = "Thank You"
+                    }
+
+                    function mOut(obj) {
+                        obj.innerHTML = "hello"
+                    }
+                </script>
+                <h6>onmouseout/onmousover</p>
+            </td>
+            
+            
+        </tr>
+        <tr>
+            
+            <td id ="id1">
+                <script>
+                    function myFunction(y)
+                    {
+                        y.style.background="red";
+                    }
+                </script>
+                name <input type="text" onfocus="myFunction(this)">
+                <h6>used in onfoucus to style color</p>
+
+            </td>
+            <td id ="id1">
+               age <input type="text" id="myInput" onfocus="focusFunction(this)" onblur="blurFunction(this)">
+
+                <script>
+                function focusFunction(y) {
+                  document.getElementById("myInput")
+                  y.style.background = "yellow";
+                }
+                
+                function blurFunction(y) {
+                  document.getElementById("myInput")
+                y.style.background = "red";
+                }
+                </script>
+                <h6>used to onfocus bg chang color</p>
+                
+                </td>
+            <td id ="id1">
+                <script>
+                    let z=0;
+                    function myMoveFunction() {
+                        document.getElementById("demo1").innerHTML = z+=1;
+                    }
+                </script>
+                <div onmousemove="myMoveFunction()">
+                    <p>onmousemove</p>
+                    <p id="demo1">count!</p>
+                  </div>
+                  <h6>mousmove than count</h6>
+            </td>
+            <td id ="id1">
+                <script>
+                    let y=0;
+                    function myMoveFunction1() {
+                        document.getElementById("demo2").innerHTML = y+=1;
+                    }
+                </script>
+                <div onmouseenter="myMoveFunction1()">
+                    <p>onmouseenter</p>
+                    <p id="demo2">count!</p>
+                  </div>
+                  <h6>mousmove than enter how many <br>
+
+                    time you can enter in the box</h6>
+
+            </td>
+        </tr>
+        <tr>
+            <td id="id1">
+                <script>
+                    let x=0;
+                    function myMoveFunction2() {
+                        document.getElementById("demo3").innerHTML = x+=1;
+                    }
+                </script>
+                
+                <div onmouseover="myMoveFunction2()">
+                    <p>onmouseover</p>
+                    <p id="demo3">count</p>
+                  </div>
+                  <h6>same as mouse move</h6>
+            </td>
+            <td id ="id1">
+                <p id="myP" onmousedown="mouseDown()" onmouseup="mouseUp()">
+                Lorem ipsum dolor sit amet consectetur 
+                </p>
+            <script>
+                function mouseDown() {
+                    document.getElementById("myP").style.color = "red";
+                }
+
+                
+            </script>
+            <h6>used to onmouseup/dowm than color change</h6>
+        </td>
+            <td id ="id1">
+                <input type="text" onblur="myFunctions()">
+                <script>
+                    function myFunctions()
+                    {
+                        alert ("lost");
+                    }
+                </script><h6>used to alert like lost</h6>
+                
+            </td>
+            <td id ="id1">
+                <button onclick="setTimeout(myFunctions, 1000);">Try it</button>
+                <script>
+                    function myFunctions() {
+                      alert('Hello sir');
+                    }
+                    </script>
+                    <h6>
+                        used to alert like hello sir
+                    </h6>
+                
+            </td>
+            
+        </tr>
+        <tr>
+            <td id="id1">
+                <div >
+                    
+                    <p> menu will show.</p>
+                    </div>
+                   
+                    <div id="myDiv" >
+                    
+                    <p> menu is disabled.</p>
+                    </div>
+                <script>
+                const div = document.getElementById("myDiv");
+                div.addEventListener("contextmenu", (e) => {e.preventDefault()});
+                </script></td>
+            <td id="id1">
+                <p id="p1" ondblclick="myFunction4()" >hiiii</p>
+                <script>
+                    function myFunction4()
+                    {
+                        document.getElementById("p1").innerHTML +="hello";
+                    }
+                </script>
+               
+                <h6>
+                    used to double click than display hello
+                </h6>
+            </td>
+            <td id="id1">
+                <script>
+                    function myFunction7() {
+                      var x = document.getElementById("hello").value;
+                      document.getElementById("demo").innerHTML = "You selected: " + x;
+                    }
+                    </script>
+                    
+                <select id="hello" onchange="myFunction7()">
+                    <option value="phone">mi</option>
+                    <option value="realme">realme</option>
+                </select>
+                
+            </td>
+            <td id="id1" style="width: 500px;">
+                
+              
+                <button onclick="displayDate()">The time is?</button>
+                
+                <script>
+                function displayDate() {
+                  document.getElementById("demo").innerHTML = Date();
+                }
+                </script>
+                
+                <p id="demo"></p>
+               
+            </td>
+            
+        </tr>
+    </Table>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,tr{
+            height: 30px;
+            width: 20%;
+            border-collapse: collapse;
+            border-radius: 20%;
+             
+        }
+        table
+        {
+            border: none;
+        }
+        td{
+            width: 20px;
+            border: 1px solid black;
+        }
+        
+        .center
+        {
+            margin-left: auto;
+            margin-right: auto;
+            
+           
+        }
+        
+    </style>
+</head>
+<body style=" background-color: red;">
+    <h1 style="text-align: center;">
+        yashvi soladhra <br>   Employee id= 24DEV097
+    </h1>
+   
+        <div>
+            <p style="text-align: center;">score<span id="score">=0</span></p>
+            <p style="text-align: center;">time<span id="timer">=20</span></p>
+            <button id="button1" style="align-self: center;">play</button>
+        </div>
+        <table id="datatable" class="center">
+            <tr id="row1" class="row" name="row" class="rows" > 
+                <td ></td>
+                <td ></td>
+            </tr>
+            <tr id="row1" class="row" name="row" class="rows" >
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <p id ="result"></p>
+
+  
+    
+    <div id="mycounter"></div>
+    <script>
+
+        let table=document.querySelector("#datatable")
+        let score=document.getElementById("score")
+        score.value=0;
+        let timer=document.getElementById("timer")
+        timer.value=20;
+        let result=document.getElementById("result");
+        let button1=document.getElementById("button1");
+        (function()
+        {
+            table.style.display="none"
+        })();
+        
+        button1.addEventListener("click",
+        function()
+        {
+            play();
+
+        })
+        function play()
+        {
+            table.style.display="block"
+
+            
+            start()
+        }
+        function start()
+        {
+            setInterval(function()
+            {
+                if(timer.value>0)
+                {
+                    timer.innerHTML=--timer.value;
+                }
+                else
+                {
+                    table.style.display="none"
+                    result.style.display="block"
+                    
+                    result.innerHTML=`<h3>your score ${score.value}</h3>
+                    <button id=playagain>play again</button>`;
+                    playagain.addEventListener("click"
+                    ,function()
+                    {
+                        play1()
+                    }
+                    );
+                    function play1()
+                    {
+                        timer.value=20;
+                        location.reload()
+                        result.style.display="none"
+                    }
+                    
+                }
+            },1000);
+        }
+
+        
+
+         table.addEventListener("click",
+         function()
+         {
+           
+            color();
+         })
+        
+
+         function add_row()
+        {
+            var table=document.getElementById('datatable');
+            var x =document.getElementById("row1").cells.length
+            var row=table.insertRow()
+            for(  i=0;i<x;i++)
+            {
+                row.insertCell()
+            }
+        }
+        function add_colums()
+        {
+            var row =document.querySelectorAll("tr")
+            for(  i=0;i<row.length;i++)
+            {
+                row[i].insertCell()     
+            }
+        }
+       function color()
+       {
+            const td1=document.querySelectorAll("td")
+           var table1 = Math.floor(Math.random()*256);
+           var table2 =Math.floor(Math.random()*256);
+           var table3 =Math.floor(Math.random()*256); 
+           var colors=`rgb(${table1}, ${table2}, ${table3})`;
+           var colors1=`rgba(${table1}, ${table2}, ${table3}, 0.7)`;
+           const random=Math.floor(Math.random()* td1.length);
+
+
+
+            
+           for( let i=0; i<td1.length;i++)
+            {
+                if(i===random)
+                {   
+                    td1[i].style.backgroundColor=colors1;
+                }
+                else
+                {
+                    td1[i].style.backgroundColor=colors;
+                }
+            }
+            for( let i=0; i<td1.length;i++)
+            {
+                let y=td1[i].addEventListener
+                ("click",function()
+                    {
+                        if(i===random && td1[i].style.backgroundColor==colors1)
+                        {
+                          score1();
+                          add_colums();
+                          add_row();
+
+                        }
+                    }
+                )
+                  
+            }
+            
+            function score1()
+            {
+                for( let i=0; i<td1.length;i++)
+            {
+                if(i===random)
+                {   
+                    score.innerHTML=++score.value;
+                    color()
+                }
+                
+            }
+                
+
+            }
+        }color();
+
+        td1[random].addEventListener("click",
+        function()
+        {
+            countstore()
+            if(table.row<length<=9)
+            {
+               add_colums()
+               add_row()
+            }
+        });
+
+       
+        
+    </script>
+</body>
+</html>

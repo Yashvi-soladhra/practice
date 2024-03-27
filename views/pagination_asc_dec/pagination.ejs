@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+       
+    
+</head>
+
+<style>
+    .disable {
+        pointer-events: none;
+    }
+
+    table,
+    tr,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    
+
+    a {
+        text-decoration: none;
+        color: black;
+        font-size: 17px;
+        
+    }
+    .box
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+    button
+    {
+        padding: 5px;
+    }
+    table
+    {
+        margin: 20px;
+    }
+    td
+    {
+        padding: 5px;
+    }
+    .s1
+    {
+        text-align: center;
+        color: brown;
+    }
+    .p1
+    {
+        background-color: rgb(248, 219, 182);
+        font-size: larger;
+        color: black;
+        font-style: italic;
+        font-weight: 100;
+        text-align: center;
+    }
+    
+</style>
+
+<body>
+
+    <select name="select" id="orderby" class="select1">
+        <optgroup label="asc"> 
+
+            <!-- <option value="">select option</option> -->
+            <option value="sid">ID</option>
+            <option value="f_name">FIRST NAME</option>
+            <option value="l_name">LAST NAME</option>
+            <option value="city">CITY</option>
+        </optgroup>
+    
+       <optgroup label="desc">
+            <!-- <option value="">select option</option> -->
+            <option value="sid desc">ID</option>
+            <option value="f_name desc">FIRST NAME</option>
+            <option value="l_name desc">LAST NAME</option>
+            <option value="city desc">CITY</option>
+    </optgroup>
+      </select>
+    <table>
+        <h1 class="s1">STUDENT   INFORMATION</h1>
+        <tr class="p1">
+
+            <td>ID</td>
+            <td>First name</td>
+            <td>Last name</td>
+            <td>Middal name</td>
+            <td>City</td>
+            <td>Email</td>
+            <td>Country</td>
+            <td>Address</td>
+            <td>State</td>
+            <td>ZipCode</td>
+            <td>Enroll no</td>
+            <td>Age</td>
+
+        </tr>
+        <% result.forEach(item=>
+            {%>
+            <tr>
+                <td>
+                    <%= item.sid %>
+                </td>
+                <td>
+                    <%= item.f_name%>
+                </td>
+                <td>
+                    <%= item.l_name%>
+                </td>
+                <td>
+                    <%= item.m_name%>
+                </td>
+                <td>
+                    <%= item.city%>
+                </td>
+                <td>
+                    <%= item.Email%>
+                </td>
+                <td>
+                    <%= item.Country%>
+                </td>
+                <td>
+                    <%= item.Address%>
+                </td>
+                <td>
+                    <%= item.State%>
+                </td>
+                <td>
+                    <%= item.ZipCode%>
+                </td>
+                <td>
+                    <%= item.enroll_no%>
+                </td>
+                <td>
+                    <%= item.age%>
+                </td>
+            </tr>
+            <% }); %>
+
+
+
+
+    </table>
+
+
+<div class="box">
+
+    <div>
+        <button class=<%=page==1? "disable" :"" %> >
+            <a href="/pagination_asc_dec/pages/?page=<%=1%>&orderby=<%=orderby%>">
+                << </a>
+        </button>
+    </div>
+    <div>
+        <button class=<%=page-1<1 ? "disable" :"" %>>
+            <a href="/pagination_asc_dec/pages/?page=<%=page-1%>&orderby=<%=orderby%>">
+                < </a>
+        </button>
+    </div>
+    <div>
+        <p><%= page %></p>
+    </div>
+    <div>
+        <button class=<%=page+1>lastpage ? "disable":"" %> >
+            <a href="/pagination_asc_dec/pages/?page=<%=page+1%>&orderby=<%=orderby%>">
+                 > </a>
+        </button>
+    </div>
+    <div>
+        <button class=<%=page==lastpage ? "disable" :"" %>>
+            <a href="/pagination_asc_dec/pages/?page=<%=lastpage%>&orderby=<%=orderby%>"> >> </a>
+        </button>
+    </div>
+
+
+
+
+</div>
+    <script>
+        let orderby=document.getElementById("orderby");
+        orderby.addEventListener("change",function()
+        {
+            window.location.href=window.location.origin+window.location.pathname+`?page=1&orderby=${orderby.value}`
+        })
+    </script>
+   
+</body>
+
+
+</html>

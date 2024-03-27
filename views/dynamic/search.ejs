@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <h1>yashvi soladhra</h1>
+    <h2>24DEV097</h2>
+    <form action="/page" method="post">
+        <label for="textquery">search</label>
+
+        <input type="textarea" name="textquery"  placeholder="type querry" style="height: 20px;">
+        
+        <input type="submit" value="search" >
+  
+    </form>
+
+    <% if (result.length!=0) { %>
+          <%-include("page") %>
+     
+    <% } %>
+</body>
+</body>
+</html>

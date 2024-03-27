@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .disable {
+        pointer-events: none;
+    }
+
+    tr,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    table {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        border-collapse: collapse;
+        margin: 20px;
+        width: 100%;
+    }
+
+    .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    button {
+        padding: 5px;
+    }
+
+
+
+    td {
+        padding: 5px;
+        width: 100px;
+
+    }
+
+    .box1 {
+        text-align: center;
+        background-color: rgb(206, 143, 61);
+    }
+
+    .a {
+        text-decoration: none;
+        border: 1px solid black;
+        color: brown;
+        background-color: antiquewhite;
+    }
+
+    .h1 {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <H1 class="h1">YASHVI SOLADHRA </H1>
+    <h5 class="h1">EMPLOYEMENT ID:=24DEV097</h5>
+    <h4 class="h1"> Student Report card</h6>
+
+        <table>
+
+            <div>
+                <tr>
+                    <td rowspan="2" class="box1">ID</td>
+                    <td rowspan="2" class="box1">NAME</td>
+                    <td colspan="2" class="box1">FINAL</td>
+                    <td colspan="2" class="box1">PRELIM</td>
+                    <td colspan="2" class="box1">TERMINAL</td>
+                    <td rowspan="2" class="box1">TOTAL</td>
+                    <td rowspan="2" class="box1">RESULT</td>
+                </tr>
+                <tr>
+                    <td class="box1">FINAL-TEAYORY</td>
+                    <td class="box1">FINAL-PRECTICAL</td>
+                    <td class="box1">TERMINAL-TEATORY</td>
+                    <td class="box1">TERMINAL-PRECTICAL</td>
+                    <td class="box1">PRILIM-THEYORY</td>
+                    <TD class="box1">PRILIM-PRECTICAL</TD>
+
+                </tr>
+            </div>
+
+
+            <tr>
+                <% result.forEach(item=>
+                    {%>
+            <tr class="p2">
+                <td>
+                    <%= item.studentid %>
+                </td>
+                <td>
+                    <%=item.student_name%>
+                </td>
+                <td>
+                    <%=item.final_t %>
+
+                </td>
+                <td>
+                    <%=item.final_p%>
+                </td>
+                <td>
+                    <%=item.terminal_t%>
+                </td>
+                <td>
+                    <%=item.terminal_p%>
+                </td>
+                <td>
+                    <%=item.prilim_t%>
+                </td>
+                <td>
+                    <%=item.prilim_p%>
+                </td>
+                <td>1200/
+                    <%= Number(item.final_t)+Number(item.final_p)+Number(item.terminal_t)+Number(item.terminal_p)+Number(item.prilim_t)+Number(item.prilim_p)
+                        %>
+                </td>
+
+                <td>
+                    <a href="/result/item/<%= item.studentid %>" class="a">REPORT</a>
+                </td>
+            </tr>
+            <% }); %>
+                </tr>
+
+
+
+
+        </table>
+
+        <div class="box">
+
+            <div>
+                <button class=<%=page==1? "disable" :"" %> >
+                    <a href="/result/page/?page=<%=1%>">
+                        << </a>
+                </button>
+            </div>
+            <div>
+                <button class=<%=page-1<1 ? "disable" :"" %>>
+                    <a href="/result/page/?page=<%=page-1%>">
+                        < </a>
+                </button>
+            </div>
+            <div>
+                <p>
+                    <%= page %>
+                </p>
+            </div>
+            <div>
+                <button class=<%=page+1>lastpage ? "disable":"" %> >
+                    <a href="/result/page/?page=<%=page+1%>">
+                        > </a>
+                </button>
+            </div>
+            <div>
+                <button class=<%=page==lastpage ? "disable" :"" %> >
+                    <a href="/result/page/?page=<%=lastpage%>"> >> </a>
+                </button>
+            </div>
+
+
+
+
+
+
+</body>
+
+</html>

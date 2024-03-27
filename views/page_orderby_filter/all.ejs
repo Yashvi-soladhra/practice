@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../fontawesome-free-6.5.1-web/css/all.css">
+</head>
+<style>
+    table,tr,td
+    {
+         border:  2px solid black;
+         border-collapse: collapse;
+    }
+</style>
+<body>
+    
+    <h1>TABLE INFORMATION</h1>
+    <table>
+        <tr>
+            
+            <td>ID</td>
+            <td>First name</td>
+            <td>Last name</td>
+            <td>Middal name</td>
+            <td>City</td>
+            <td>Email</td>
+            <td>Country</td>
+            <td>Address</td>
+            <td>State</td>
+            <td>ZipCode</td>
+            <td>Enroll no</td>
+            <td>Age</td>
+
+        </tr>
+        <% result.forEach(item => 
+        {%>
+         <tr>
+             <td><%= item.sid %></td>
+             <td><%= item.f_name%></td>
+             <td><%= item.l_name%></td>
+             <td><%= item.m_name%></td>
+             <td><%= item.city%></td>
+             <td><%= item.Email%></td>
+             <td><%= item.Country%></td>
+             <td><%= item.Address%></td>
+             <td><%= item.States%></td>
+             <td><%= item.ZipCode%></td>
+             <td><%= item.enroll_no%></td>
+             <td><%= item.age%></td></tr>
+        <%  }); %>
+
+       
+          
+        
+    </table>
+  
+        
+</body>
+</html>

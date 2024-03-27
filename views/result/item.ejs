@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+         tr,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 90px;
+    }
+
+    table {
+        align-items: center;
+        justify-content: center;
+        /* display: flex; */
+        border-collapse: collapse;
+        margin: 20px;
+        width: 100%;
+    }
+    
+    button {
+        padding: 5px;
+    }
+    .box1
+    {
+        text-align: center;
+        background-color: rgb(206, 143, 61);
+    }
+   .h1
+   {
+    text-align: center;
+   }
+
+   
+    </style>
+    <div>
+        <p class="h1">
+            ID: <%=result[0].studentid %>
+        </p>
+        <p class="h1">
+            NAME: <%=result[0].student_name %>
+        </p>
+
+     
+        
+    </div>
+    <table>
+        <div>
+            <tr class="box2">
+                <td rowspan="2" class="box1">SUBJECT NAME </td>
+                <td colspan="2" class="box1">FINAL</td>
+                <td colspan="2" class="box1">PRELIM</td>
+                <td colspan="2" class="box1">TERMINAL</td>
+                <TD colspan="2" rowspan="2" class="box1">TOTAL</TD>
+                
+           
+                </tr>
+            <tr>
+                <td  class="box1">FINAL-TEAYORY</td>
+                <td  class="box1">FINAL-PRECTICAL</td>
+                <td  class="box1">TERMINAL-TEATORY</td>
+                <td  class="box1">TERMINAL-PRECTICAL</td>
+                <td  class="box1">PRILIM-THEYORY</td>
+                <TD  class="box1">PRILIM-PRECTICAL</TD>
+                
+                
+            </tr>
+
+           
+            
+            
+        </div>
+
+
+        <tr>
+            <% result.forEach(item=>
+                {%>
+        <tr class="p2">
+           
+            <td>
+                <%=item.Subjectname %>
+
+                </td>
+            <td>
+                <%=item.final_t %>
+
+            </td>
+            <td>
+                <%=item.final_p%>
+            </td>
+            <td>
+                <%=item.terminal_t%>
+            </td>
+            <td>
+                <%=item.terminal_p%>
+            </td>
+            <td>
+                <%=item.prilim_t%>
+            </td>
+            <td>
+                <%=item.prilim_p%>
+            </td>
+            <td>
+                <%=Number(item.final_t)+Number(item.final_p)+Number(item.terminal_t)+Number(item.terminal_p)+Number(item.prilim_t)+Number(item.prilim_p)
+                    %>
+            </td>
+
+           
+        </tr>
+        <% }); %>
+            </tr>
+
+
+
+
+    </table>
+
+
+    <table>
+        
+            <tr>
+                
+                <td  class="box1">no of days</td>
+                <td  class="box1"> present days</td>    
+                
+            </tr>
+
+            <tr>
+                
+                <td>365</td>
+                <td><%=result2[0][0].att %></td>    
+                
+            </tr>
+            
+
+            
+
+        
+        </table>
+   
+
+</body>
+</html>
+
+

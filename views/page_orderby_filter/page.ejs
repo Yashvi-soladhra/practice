@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+       
+    
+</head>
+
+<style>
+    .disable {
+        pointer-events: none;
+    }
+
+    table,
+    tr,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    
+
+    a {
+        text-decoration: none;
+        color: black;
+        font-size: 17px;
+        
+    }
+    .box
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+    button
+    {
+        padding: 5px;
+    }
+    table
+    {
+        margin: 20px;
+    }
+    td
+    {
+        padding: 5px;
+    }
+    .s1
+    {
+        text-align: center;
+        color: brown;
+    }
+    .p1
+    {
+        background-color: rgb(248, 219, 182);
+        font-size: larger;
+        color: black;
+        font-style: italic;
+        font-weight: 100;
+        text-align: center;
+    }
+    
+</style>
+
+<body>
+
+  
+
+     
+
+
+    <table>
+        <h1 class="s1">STUDENT  INFORMATION</h1>
+        <tr class="p1">
+
+            <td ><a href="/pagefilter/page?orderby=sid&sort=<%=orderby === "sid"&& orderby1 ==='asc'?'desc':'asc' %>">ID </a></td>
+           
+            <td><a href="/pagefilter/page?orderby=f_name&sort=<%=orderby === "f_name"&& orderby1 ==='asc'?'desc':'asc' %>">First name  </a></td> 
+            <td><a href="/pagefilter/page?orderby=l_name&sort=<%=orderby === "l_name"&& orderby1 ==='asc'?'desc':'asc' %>">Last name</a></td>
+            <td><a href="/pagefilter/page?orderby=m_name&sort=<%=orderby === "m_name"&& orderby1 ==='asc'?'desc':'asc' %>">Middal name</a></td>
+            <td><a href="/pagefilter/page?orderby=city&sort=<%=orderby === "city"&& orderby1 ==='asc'?'desc':'asc' %>">City</a></td>
+            <td><a href="/pagefilter/page?orderby=Email&sort=<%=orderby === "Email"&& orderby1 ==='asc'?'desc':'asc' %>">Email</a></td>
+            <td><a href="/pagefilter/page?orderby=Country&sort=<%=orderby === "Country"&& orderby1 ==='asc'?'desc':'asc' %>">Country</a></td>
+            <td><a href="/pagefilter/page?orderby=Address&sort=<%=orderby === "Address"&& orderby1 ==='asc'?'desc':'asc' %>">Address</a></td>
+            <td><a href="/pagefilter/page?orderby=State&sort=<%=orderby === "State"&& orderby1 ==='asc'?'desc':'asc' %>">State</a></td>
+            <td><a href="/pagefilter/page?orderby=ZipCode&sort=<%=orderby === "ZipCode"&& orderby1 ==='asc'?'desc':'asc' %>">ZipCode</a></td>
+            <td><a href="/pagefilter/page?orderby=enroll_no&sort=<%=orderby === "enroll_no"&& orderby1 ==='asc'?'desc':'asc' %>">Enroll no</a></td>
+            <td><a href="/pagefilter/page?orderby=age&sort=<%=orderby === "age"&& orderby1 ==='asc'?'desc':'asc' %>">Age</a></td>
+
+        </tr>
+        <% result.forEach(item=>
+            {%>
+            <tr>
+                <td>
+                    <%= item.sid %>
+                    
+                </td>
+                <td>
+                    <%= item.f_name%>
+                </td>
+                <td>
+                    <%= item.l_name%>
+                </td>
+                <td>
+                    <%= item.m_name%>
+                </td>
+                <td>
+                    <%= item.city%>
+                </td>
+                <td>
+                    <%= item.Email%>
+                </td>
+                <td>
+                    <%= item.Country%>
+                </td>
+                <td>
+                    <%= item.Address%>
+                </td>
+                <td>
+                    <%= item.State%>
+                </td>
+                <td>
+                    <%= item.ZipCode%>
+                </td>
+                <td>
+                    <%= item.enroll_no%>
+                </td>
+                <td>
+                    <%= item.age%>
+                </td>
+            </tr>
+            <% }); %>
+
+
+
+
+    </table>
+
+
+
+    <div class="box">
+
+<div>
+    <button class=<%=page==1? "disable" :"" %> >
+        <a href="/pagefilter/page/?page=<%=1%>&select=<%=select%>&orderby=<%=orderby%>&orderby1=<%=orderby1%>">
+            << </a>
+    </button>
+</div>
+<div>
+    <button class=<%=page-1<1 ? "disable" :"" %>>
+        <a href="/pagefilter/page/?page=<%=page-1%>&select=<%=select%>&orderby=<%=orderby%>&orderby1=<%=orderby1%>">
+            < </a>
+    </button>
+</div>
+<div>
+    <p>
+        <%= page %>
+    </p>
+</div>
+<div>
+    <button class=<%=page+1>lastpage ? "disable":"" %> >
+        <a href="/pagefilter/page/?page=<%=page+1%>&select=<%=select%>&orderby=<%=orderby%>&orderby1=<%=orderby1%>">
+            > </a>
+    </button>
+</div>
+<div>
+    <button class=<%=page==lastpage ? "disable" :"" %> >
+        <a href="/pagefilter/page/?page=<%=lastpage%>&select=<%=select%>&orderby=<%=orderby%>&orderby1=<%=orderby1%>"> >> </a>
+    </button>
+</div>
+
+
+
+   
+     
+        <script>
+
+        let select = document.getElementById("select");
+        let selects = select.options;
+        select.addEventListener("change", function () {
+        window.location.href = window.location.origin + window.location.pathname + `?page=1&select=${select.value}`
+        })
+
+    console.log(selects);
+    for (let i = 0; i < selects.length; i++) {
+        if (Number(selects[i].value.split("-")[1]) == (selects[i].dataset.month)) {
+            console.log(selects[i].dataset.month);
+            selects[i].selected = true;
+        }
+
+    }
+
+
+
+
+    </script>
+
+
+   
+</body>
+
+
+</html>
