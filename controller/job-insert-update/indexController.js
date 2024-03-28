@@ -1,5 +1,5 @@
 // const moment = require("moment");
-let conn = require("../../config/job-insert-update/connection");
+let con = require("../../config/connection");
 const { Router } = require("express");
 
 
@@ -14,7 +14,7 @@ const basicdetails = async (req, res) => {
         dob = new Date(dob)
         data = [fname, currdesignation, email, gender, address, state, lname, dob, phone, relnstatus, city, zipcode]
 
-        let [result] = await conn.query(sql, [data]);
+        let [result] = await con.query(sql, [data]);
 
         let bid = result.insertId;
 
@@ -46,7 +46,7 @@ const educationdeatils = async (req, res, bid) => {
 
         for (let i = 0; i < array.length; i++) {
             if (array[i].includes("ssc") || array[i].includes("hsc") || !array[i].includes("")) {
-                [result] = await conn.query(sql, [array[i]])
+                [result] = await con.query(sql, [array[i]])
             }
 
         }
@@ -82,7 +82,7 @@ const workexperience = async (req, res, bid) => {
 
                 // console.log(sql);
 
-                [result] = await conn.query(sql, [array]);
+                [result] = await con.query(sql, [array]);
             }
         }
 
@@ -107,17 +107,17 @@ const languageknown = async (req, res, bid) => {
         if (lang1 !== undefined) {
             let l1 = [bid, lang1, langcheck1.includes("read") ? true : false,
                 langcheck1.includes("write") ? true : false, langcheck1.includes("speak") ? true : false];
-            [result] = await conn.query(sql, [l1])
+            [result] = await con.query(sql, [l1])
         }
         if (lang2 !== undefined) {
             let l2 = [bid, lang2, langcheck2.includes("read") ? true : false,
                 langcheck2.includes("write") ? true : false, langcheck2.includes("speak") ? true : false];
-            [result] = await conn.query(sql, [l2])
+            [result] = await con.query(sql, [l2])
         }
         if (lang3 != undefined) {
             let l3 = [bid, lang3, langcheck3.includes("read") ? true : false,
                 langcheck3.includes("write") ? true : false, langcheck3.includes("speak") ? true : false];
-            [result] = await conn.query(sql, [l3])
+            [result] = await con.query(sql, [l3])
         }
 
         return result;
@@ -142,25 +142,25 @@ const technologyknown = async (req, res, bid) => {
         if (php && phptech) {
             phpdata = [bid, php, phptech];
 
-            [result] = await conn.query(sql, [phpdata])
+            [result] = await con.query(sql, [phpdata])
 
         }
         if (mysql && mysqltech) {
             mysqldata = [bid, mysql, mysqltech];
 
-            [result] = await conn.query(sql, [mysqldata])
+            [result] = await con.query(sql, [mysqldata])
 
         }
         if (laravel && laraveltech) {
             laraveldata = [bid, laravel, laraveltech];
 
-            [result] = await conn.query(sql, [laraveldata])
+            [result] = await con.query(sql, [laraveldata])
 
         }
 
         if (oracle && oracletech) {
             oracledata = [bid, oracle, oracletech];
-            [result] = await conn.query(sql, [oracledata])
+            [result] = await con.query(sql, [oracledata])
         }
 
         return result;
@@ -194,7 +194,7 @@ const references = async (req, res, bid) => {
 
                 console.log(array);
 
-                [result] = await conn.query(sql, [array]);
+                [result] = await con.query(sql, [array]);
             }
         }
 
@@ -217,7 +217,7 @@ const preferences = async (req, res, bid) => {
 
         let preference = [bid, prefloc, noticeperiod, expectedctc, currentctc, department];
 
-        let [result] = await conn.query(sql, [preference])
+        let [result] = await con.query(sql, [preference])
 
         return result;
 
@@ -235,7 +235,7 @@ const preferences = async (req, res, bid) => {
 const getdata = async (req, res, table, bid, order) => {
     let sql = `select * from ${table} where candid=${bid} order by ${order}`;
 
-    let [result] = await conn.query(sql);
+    let [result] = await con.query(sql);
 
     return result;
 
@@ -254,7 +254,7 @@ const updatebasic = async (req, res, bid) => {
         };
 
         let sql = `update basicdetails set ? where candid=?`
-        let [result] = await conn.query(sql, [basicdetail, bid])
+        let [result] = await con.query(sql, [basicdetail, bid])
 
         return result;
 
@@ -291,7 +291,7 @@ const updateeducation = async (req, res, bid) => {
 
     for (let i = 0; i < array.length; i++) {
         if (Object.values(array[i]).includes("ssc") || Object.values(array[i]).includes("hsc") || !Object.values(array[i]).includes("")) {
-            [result] = await conn.query(sql, [array[i], bid, array[i].degreename])
+            [result] = await con.query(sql, [array[i], bid, array[i].degreename])
         }
 
     }
@@ -317,12 +317,12 @@ const updateworkexperience = async (req, res, bid) => {
             array["todate"] = moment(to[i]).format('YYYY-MM-DD');
 
             if (array["companyname"] && !workid[i]) {
-                [result] = await conn.query(`insert into workexperiences set candid=${bid},?`, [array]);
+                [result] = await con.query(`insert into workexperiences set candid=${bid},?`, [array]);
             } else {
-                [result] = await conn.query(sql, [array, workid[i]]);
+                [result] = await con.query(sql, [array, workid[i]]);
             } 
         } if (companyname[i].trim() == "" && workid[i]) {
-            [result] = await conn.query(`delete from workexperiences where candid=${bid} and wid=${workid[i]}`);
+            [result] = await con.query(`delete from workexperiences where candid=${bid} and wid=${workid[i]}`);
         }
 
     }
@@ -339,7 +339,7 @@ const updatelanguageknowns = async (req, res, bid) => {
     let sql = `update languageknowns set ? where candid=? and language=?`;
 
     let query = `select * from languageknowns where candid=${bid}`;
-    let [l] = await conn.query(query);
+    let [l] = await con.query(query);
 
     let lang = [];
 
@@ -356,12 +356,12 @@ const updatelanguageknowns = async (req, res, bid) => {
         };
 
         if (lang.includes(lang1)) {
-            [result] = await conn.query(sql, [l1, bid, "hindi"])
+            [result] = await con.query(sql, [l1, bid, "hindi"])
         } else {
-            [result] = await conn.query(`insert into languageknowns SET candid=${bid},?`, [l1])
+            [result] = await con.query(`insert into languageknowns SET candid=${bid},?`, [l1])
         }
     } else {
-        [result] = await conn.query(`delete from languageknowns where candid=${bid} and language=?`, ["hindi"])
+        [result] = await con.query(`delete from languageknowns where candid=${bid} and language=?`, ["hindi"])
     }
 
 
@@ -372,13 +372,13 @@ const updatelanguageknowns = async (req, res, bid) => {
         };
 
         if (lang.includes(lang2)) {
-            [result] = await conn.query(sql, [l2, bid, lang2])
+            [result] = await con.query(sql, [l2, bid, lang2])
         } else {
-            [result] = await conn.query(`insert into languageknowns SET candid=${bid},?`, [l2])
+            [result] = await con.query(`insert into languageknowns SET candid=${bid},?`, [l2])
         }
 
     } else {
-        [result] = await conn.query(`delete from languageknowns where candid=${bid} and language=?`, ["gujrati"])
+        [result] = await con.query(`delete from languageknowns where candid=${bid} and language=?`, ["gujrati"])
     }
 
     if (lang3 != undefined) {
@@ -390,14 +390,14 @@ const updatelanguageknowns = async (req, res, bid) => {
         };
 
         if (lang.includes(lang3)) {
-            [result] = await conn.query(sql, [l3, bid, lang3])
+            [result] = await con.query(sql, [l3, bid, lang3])
         } else {
-            [result] = await conn.query(`insert into languageknowns SET candid=${bid},?`, [l3])
+            [result] = await con.query(`insert into languageknowns SET candid=${bid},?`, [l3])
         }
 
 
     } else {
-        [result] = await conn.query(`delete from languageknowns where candid=${bid} and language=?`, ["english"])
+        [result] = await con.query(`delete from languageknowns where candid=${bid} and language=?`, ["english"])
     }
 
     return result;
@@ -416,7 +416,7 @@ const updatetechnology = async (req, res, bid) => {
     let sql = `update technologyknowns set ? where candid=? and techname=?`;
 
     let query = `select * from technologyknowns where candid=${bid}`;
-    let [technology] = await conn.query(query);
+    let [technology] = await con.query(query);
 
     let tech = [];
 
@@ -433,12 +433,12 @@ const updatetechnology = async (req, res, bid) => {
         };
 
         if (tech.includes(php)) {
-            [result] = await conn.query(sql, [phpdata, bid, php])
+            [result] = await con.query(sql, [phpdata, bid, php])
         } else {
-            [result] = await conn.query(`insert into technologyknowns set candid=${bid},?`, [phpdata])
+            [result] = await con.query(`insert into technologyknowns set candid=${bid},?`, [phpdata])
         }
     } else {
-        [result] = await conn.query(`delete from technologyknowns where candid=${bid} and techname=?`, ["php"])
+        [result] = await con.query(`delete from technologyknowns where candid=${bid} and techname=?`, ["php"])
     }
 
 
@@ -448,12 +448,12 @@ const updatetechnology = async (req, res, bid) => {
             "level": mysqltech
         };
         if (tech.includes(mysql)) {
-            [result] = await conn.query(sql, [mysqldata, bid, mysql])
+            [result] = await con.query(sql, [mysqldata, bid, mysql])
         } else {
-            [result] = await conn.query(`insert into technologyknowns set candid=${bid},?`, [mysqldata])
+            [result] = await con.query(`insert into technologyknowns set candid=${bid},?`, [mysqldata])
         }
     } else {
-        [result] = await conn.query(`delete from technologyknowns where candid=${bid} and techname=?`, ["mysql"])
+        [result] = await con.query(`delete from technologyknowns where candid=${bid} and techname=?`, ["mysql"])
     }
 
     if (laravel && laraveltech) {
@@ -463,12 +463,12 @@ const updatetechnology = async (req, res, bid) => {
         };
 
         if (tech.includes(laravel)) {
-            [result] = await conn.query(sql, [laraveldata, bid, laravel])
+            [result] = await con.query(sql, [laraveldata, bid, laravel])
         } else {
-            [result] = await conn.query(`insert into technologyknowns set candid=${bid},?`, [laraveldata])
+            [result] = await con.query(`insert into technologyknowns set candid=${bid},?`, [laraveldata])
         }
     } else {
-        [result] = await conn.query(`delete from technologyknowns where candid=${bid} and techname=?`, ["laravel"])
+        [result] = await con.query(`delete from technologyknowns where candid=${bid} and techname=?`, ["laravel"])
     }
 
     if (oracle && oracletech) {
@@ -478,12 +478,12 @@ const updatetechnology = async (req, res, bid) => {
         };
 
         if (tech.includes(oracle)) {
-            [result] = await conn.query(sql, [oracledata, bid, oracle])
+            [result] = await con.query(sql, [oracledata, bid, oracle])
         } else {
-            [result] = await conn.query(`insert into technologyknowns set candid=${bid},?`, [oracledata])
+            [result] = await con.query(`insert into technologyknowns set candid=${bid},?`, [oracledata])
         }
     } else {
-        [result] = await conn.query(`delete from technologyknowns where candid=${bid} and techname=?`, ["oracle"])
+        [result] = await con.query(`delete from technologyknowns where candid=${bid} and techname=?`, ["oracle"])
     }
 
     return result;
@@ -510,15 +510,15 @@ const updatereference = async (req, res, bid) => {
 
 
             if (array["person_name"] && !refid[i]) {
-                [result] = await conn.query(`insert into reference set candid=${bid},?`, [array]);
+                [result] = await con.query(`insert into reference set candid=${bid},?`, [array]);
             } else {
-                [result] = await conn.query(sql, [array, bid, refid[i]]);
+                [result] = await con.query(sql, [array, bid, refid[i]]);
             }
 
 
 
         } if (name[i].trim() == "" && refid[i]) {
-            [result] = await conn.query(`delete from reference where candid=${bid} and refid=${refid[i]}`);
+            [result] = await con.query(`delete from reference where candid=${bid} and refid=${refid[i]}`);
         }
 
     }
@@ -547,7 +547,7 @@ const updatepreference = async (req, res, bid) => {
 
 
 
-        let [result] = await conn.query(sql, [preference, bid])
+        let [result] = await con.query(sql, [preference, bid])
 
         return result;
     } catch (error) {
@@ -649,7 +649,7 @@ exports.searchcombo = async (req, res) => {
 
             let sql = `select * from basicdetails where email="${email}" limit 1;`;
 
-            let [result] = await conn.query(sql);
+            let [result] = await con.query(sql);
 
             if (result.length == 1) {
                 return res.render("job-insert-update/home", {
@@ -815,7 +815,7 @@ exports.updateform = async (req, res) => {
 
 exports.results = async (req, res) => {
     let sql = `select * from basicdetails`;
-    [result] = await conn.query(sql,)
+    [result] = await con.query(sql,)
 
     res.render("job-insert-update/show", { result });
 

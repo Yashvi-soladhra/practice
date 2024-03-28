@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .reg {
+        justify-content: center;
+        display: flex;
+        color: brown;
+        padding-top: 100px;
+
+
+    }
+
+    .submit {
+        background-color: antiquewhite;
+    }
+
+    table {
+        padding-top: 20px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+
+    td {
+        gap: 200px;
+        padding-top: 15px;
+
+    }
+
+    .y1 {
+        border-radius: 5px;
+        height: 20px;
+    }
+
+    .box {
+        text-align: center;
+        font-size: large;
+        padding-top: 10px;
+    }
+
+    .box2 {
+        background-color: rgb(150, 197, 224);
+        width: 400px;
+        padding-left: 30px;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        border-radius: 7px;
+        box-shadow: 10px 10px 5px lightblue;
+
+    }
+
+    a {
+        text-decoration: none;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <form action="/fpassword" method="post">
+
+
+            <table>
+
+
+                <div>
+                    <tbody class="box2">
+                        <h2 class="reg">FORGOT</h2>
+
+                        <tr>
+                            <td><label for="">EMAIL</td>
+                            <td><input type="text" id="email" name="email" class="email"></label></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <label for="">
+                                    <input type="submit" value="VERIFY" class="submit" id="submit">
+                                    <div id="box">
+
+                                    </div>
+                                </label>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+                </div>
+
+            </table>
+        </form>
+    </div>
+
+
+
+</body>
+
+
+</html>
+
+<script>
+
+
+
+    let verify = document.getElementById("submit");
+
+    verify.addEventListener("click", async function (e) {
+        let box = document.getElementById("box");
+        box.innerHTML = "";
+
+        e.preventDefault();
+
+        let email = document.getElementById("email").value
+
+        let data = await fetch(`http://localhost:8100/fpassword`,
+            {
+                method: "post",
+                body: JSON.stringify({ email }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+        let d = await data.json();
+        console.log(d);
+
+
+       
+        if (document.querySelector(".verify")) {
+            document.querySelector(".verify").innerHTML = ""
+        }
+
+        if (d.success == true) {
+         
+            let div = document.createElement("div")
+            div.classList.add("verify")
+            div.innerHTML = `
+        <div>
+            <table>
+                <tbody class="box2">
+
+<tr>
+    <td><label for="emails">Email</td>
+    <td>
+       <input type="text" id="emails" name="emails" value="${d.email}" readonly>
+    </td>
+</tr>
+
+<tr>
+    <td><label for="">password</td>
+    <td><input type="text" id="password" name="password" class="password"></label></td>
+</tr>
+<tr>
+    <td><label for="">conform password</td>
+    <td><input type="text" id="conformpassword" name="conformpassword" class=""></label></td>
+</tr>
+<tr>
+    <td></td>
+    <td>
+        <label for="">
+            <input type="submit" value="UPDATE" class="update" id="update">
+            <div id="box2">
+
+            </div>
+        </label>
+
+    </td>
+
+</tr>
+</table>
+           
+</div>`
+            document.querySelector(".container").append(div)
+
+
+
+        } else {
+          
+            box.innerHTML = d.message
+            box.style.color = "red"
+
+        }
+
+        let success = document.getElementById("update");
+    console.log(success);
+    success.addEventListener("click", async function (e) {
+        console.log("h");
+        let box2 = document.getElementById("box2");
+        box2.innerHTML = "";
+        e.preventDefault();
+
+        let password = document.getElementById("password").value
+        
+        let conformpassword = document.getElementById("conformpassword").value
+       
+        let emails = document.getElementById("emails").value
+        console.log(emails);
+        let data = await fetch(`http://localhost:8100/setpassword`,
+            {
+                method: "post",
+                body: JSON.stringify({ password, conformpassword, emails }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+        let d = await data.json();
+        console.log(d);
+
+    });
+    if (d.success == true) {
+        box2.innerHTML = d.message
+        box2.style.color = "green"
+
+    }
+    else {
+
+        box2.innerHTML = d.message
+        box2.style.color = "red"
+    }
+    });
+
+
+  
+
+</script>

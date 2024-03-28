@@ -1,5 +1,5 @@
-let con = require("../../config/attendance/connection2");
-
+// let con = require("../../config/attendance/connection2");
+let con=require("../../config/connection")
 
 exports.functions  = async (req, res) => {
     

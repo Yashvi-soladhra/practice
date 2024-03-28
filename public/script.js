@@ -43,7 +43,7 @@
           
 
 
-            let datas = await fetch(`http://localhost:8100/y`,
+            let datas = await fetch(`http://localhost:8200/y`,
             {
                 method: "post",
                 body:JSON.stringify({username,phone,email,password,conformpassword}),

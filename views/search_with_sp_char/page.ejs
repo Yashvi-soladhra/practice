@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        .disable {
+            pointer-events: none;
+        }
+
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: black;
+            font-size: 17px;
+
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 5px;
+        }
+
+        table {
+            margin: 20px;
+        }
+
+        td {
+            padding: 5px;
+        }
+
+        .s1 {
+            text-align: center;
+            color: brown;
+        }
+
+        .p1 {
+            background-color: rgb(248, 219, 182);
+            font-size: larger;
+            color: black;
+            font-style: italic;
+            font-weight: 100;
+            text-align: center;
+        }
+    </style>
+
+
+    <table>
+
+
+        <% let key=Object.keys(result[0]) %>
+            <thead>
+                <% key.forEach(element=> { %>
+                    <td>
+                        <%=element%>
+                    </td>
+                    <% }) %>
+
+            </thead>
+            <tbody>
+                <% result.forEach(element=> { %>
+                    <tr>
+                        <% for( let i=0; i < key.length; i++ ) { %>
+                            <td>
+                                <%=element[key[i]] %>
+                            </td>
+                            <% } %>
+                    </tr>
+                    <% }) %>
+
+
+
+            </tbody>
+    </table>
+
+
+
+
+
+
+</body>
+
+</html>

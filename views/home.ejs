@@ -1,13 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>All Task</title>
 </head>
+<style>
+    a
+    {
+        text-decoration: none;
+        color: black;
+
+    }
+    
+    td
+    {
+       
+           background-color: #C2FBD7;
+           text-align: center;
+          border-radius: 50px;
+          border-width: 0;
+          box-shadow: rgba(25, 25, 25, 0.04) 0 0 1px 0, rgba(0, 0, 0, 0.1) 0 3px 4px 0;
+          color: #008000;
+          cursor: pointer;
+        
+          justify-content: center;
+          font-family: Arial, sans-serif;
+          font-size: 1em;
+          height: 70px;
+          padding: 0 30px;
+          padding-left: 50px;
+          transition: all 200ms;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    }
+    h1
+    {
+        color: blue;
+        text-align: center;
+    }
+    .submit
+    {
+        background-color: #8188d7;
+        color: white;
+        height: 60px;
+        width: 100px;
+    }
+    
+      
+</style>
 <body>
-    <form action="/home" method="get">
-        <h1>home</h1>
-    </form>
+
+    <table>
+
+        <H1>DASHBOARD</H1>
+
+        <div class="dashboard">
+            <tr>
+                <td><a href="/kuku">kuku-cube</a></td>
+                
+                <td><a href="/textacteo">Tec-Tac-Toe</a></td>
+                <td><a href="/">Job-Insert-update</a></td>
+            </tr>
+            <tr>
+                <td><a href="/attendance/page">Attendence </a></td>
+           
+                <td><a href="/dynamic">Daynamic-table</a></td>
+           
+                <td><a href="/bubblesort">Bobble sort</a></td>
+            </tr>
+           
+            <tr>
+                <td><a href="/events">Events</a></td>
+               <td><a href="/result/page">Result</a></td> 
+                <td><a href="/pagination_asc_dec/pages">Pagination</a></td>
+            </tr>
+    
+            <tr>
+              
+                <td><a href="/shchar">Search_with_special_char</a></td>
+                <td>
+                    <a href="/pagefilter/page">page_orderby_filter</a>
+                </td>
+            </tr>
+            
+        </table>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>
+                    
+                        <input type="submit" value="logout" class="submit" id="submit">
+                    
+                 
+                </td>
+               
+            </tr>
+            
+       
+        </tbody>
+        </div>
+       
 </body>
 </html>
+<script>
+    let logout = document.getElementById("submit");
+    logout.addEventListener("click", async function (e) {
+
+       
+        e.preventDefault();
+
+
+        
+
+
+
+
+        let datas = await fetch(`http://localhost:8200/logout`,
+            {
+                method: "get",
+                // body: JSON.stringify({ email, password }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+
+            });
+
+        let d = await datas.json();
+        console.log(d);
+
+        if (d.success == true) {
+          window.location="/log"
+
+        }
+        else {
+
+            box.innerHTML = d.message
+            box.style.color = "red"
+        }
+
+
+    });
+</script>

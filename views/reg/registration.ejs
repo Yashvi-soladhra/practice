@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .reg {
+        justify-content: center;
+        display: flex;
+        color: brown;
+        padding-top: 100px;
+
+
+    }
+
+    .reg1 {
+        justify-content: center;
+        display: flex;
+        color: brown;
+
+
+
+    }
+
+    .submit {
+        background-color: antiquewhite;
+    }
+
+    table {
+        padding-top: 20px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+
+    td {
+        gap: 200px;
+        padding-top: 15px;
+
+    }
+
+    .y1 {
+        border-radius: 5px;
+        height: 20px;
+    }
+
+    .box {
+        text-align: center;
+        font-size: large;
+    }
+
+    .box2 {
+        background-color: rgb(150, 197, 224);
+        width: 400px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-radius: 7px;
+        box-shadow: 10px 10px 5px lightblue;
+
+    }
+
+    a {
+        text-decoration: none;
+
+        /* background-color: bisque; */
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+    <form action="/y" method="post">
+
+
+        <div class="links">
+        </div>
+
+        <div class="container">
+            <table>
+
+                <tbody class="box2">
+
+
+                    <h1 class="reg">REGISTRATION</h1>
+                    <h6 class="reg1">Create your Account</h6>
+                    <tr>
+
+                        <td><label for="">USERNAME</td>
+                        <td><input type="text" id="username" name="username" class="required"></label></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">PHONE</td>
+                        <td><input type="text" id="phone" name="phone" class="required">
+                            </label></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">EMAIL</td>
+                        <td> <input type="text" id="email" name="email" class="required"></label></td>
+
+                    </tr>
+                    <tr>
+                        <td><label for="">PASSWORD</td>
+                        <td>
+                            <input type="password" id="password" name="password" class="required"></label>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><label for="">CONFORM PASSWORD</td>
+                        <td>
+                            <input type="password" id="conformpassword" name="conformpassword" class="required"></label>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><label for="">
+                            <input type="submit" value="REGISTRATION" class="submit" id="submit">
+                                <br>
+                            </label>
+                       </tr>
+                    </td>
+                    
+                        <tr>
+                            <td>
+                                Already have an account <a href="http://localhost:8200/log">login</a> 
+                                <div class="box">
+    
+                                </div>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</body>
+
+
+
+<script>
+    let links = document.querySelector(".links");
+    let box = document.querySelector(".box");
+    function validate() {
+        let require = document.querySelectorAll(".required");
+        let validate = document.querySelectorAll(".validate");
+        let y = true;
+
+        validate.forEach(element => {
+            element.remove();
+
+        });
+
+        require.forEach(d => {
+            if (d.value.trim() == "") {
+                let span = document.createElement("span");
+                d.insertAdjacentElement("afterend", span);
+                span.classList.add("validate")
+                span.textContent = "*Required"
+                span.style.color = "blue"
+                span.style.fontSize = "12px"
+                span.style.margin = "0 5px"
+                y = false;
+            }
+
+            let regexemail = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+
+            if (d.name == "email" && d.value.trim() != "" && !(d.value.match(regexemail))) {
+                let span = document.createElement("span")
+                d.insertAdjacentElement("afterend", span)
+                span.classList.add("validate")
+                span.textContent = "*email is not valid"
+                span.style.color = "blue"
+                span.style.fontSize = "12px"
+                span.style.margin = "0 5px"
+                y = false;
+
+
+            }
+        });
+
+        return y;
+
+    }
+
+
+    let y = document.getElementById("submit");
+
+    y.addEventListener("click", async function (e) {
+        box.innerHTML = "";
+        e.preventDefault();
+
+        // console.log(validate());
+        if (validate()) {
+            let username = document.getElementById("username").value
+            let phone = document.getElementById("phone").value
+            let email = document.getElementById("email").value
+            let password = document.getElementById("password").value
+            let conformpassword = document.getElementById("conformpassword").value
+
+
+
+
+
+
+            let datas = await fetch(`http://localhost:8200/y`,
+                {
+                    method: "post",
+                    body: JSON.stringify({ username, phone, email, password, conformpassword }),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+
+                });
+
+            let d = await datas.json();
+            console.log(d);
+
+
+
+
+            if (d.success == true) {
+                box.innerHTML = d.message
+                box.style.color = "green"
+
+                let p = document.createElement("p");
+                p.innerHTML = `<a href="http://localhost:8200/link/${d.aid}"> click here </a> to active your account`
+                links.append(p)
+            }
+            else {
+
+                box.innerHTML = d.message
+                box.style.color = "red"
+            }
+
+        }
+
+    });
+
+
+
+</script>
+
+</html>

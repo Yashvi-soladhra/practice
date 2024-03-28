@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     table,tr,td
+    {
+         border:  2px solid black;
+         border-collapse: collapse;
+         width: 50%;
+       
+    }
+    
+    .c1
+    {
+       
+        justify-content:center;
+        padding-left: 5px;
+    }
+    .job
+    {
+        text-align: center;
+    }
+    .t
+    {
+        background-color:antiquewhite;
+        /* font-size: larger; */
+        font-style: italic;
+    }
+    .p
+    {
+        text-decoration: none;
+        color: rgb(237, 95, 95);
+    }
+</style>
+<body>
+    
+<div class="c1">
+    <h1 class="job">Job_App_data_show</h1>
+    <table>
+        <tr class="t">
+            
+          
+             <td>Firstname</td>
+             <td>Lastname</td>
+             <td>Designation</td>
+             <td>Email</td>
+             <td>Dob</td>
+             <td>Phone</td>
+             <td>Gender</td>
+             <td>Reln_status</td>
+             <td>Address</td>
+             <td>City</td>
+             <td>State</td>
+             <td>zipcode</td>
+             <td>SHOW</td>
+            </tr>
+    
+
+        </tr>
+        <% result.forEach(item => 
+        {%>
+         <tr>
+             
+             <td><%= item.fname%></td>
+             <td><%= item.lname%></td>
+             <td><%= item.designation%></td>
+             <td><%= item.email%></td>
+             <td><%= item.dob%></td>
+             <td><%= item.phone%></td>
+             <td><%= item.gender%></td>
+             <td><%= item.reln_status%></td>
+             <td><%= item.address%></td>
+             <td><%= item.city%></td>
+             <td><%= item.state%></td>
+             <td><%= item.zipcode%></td>
+             <td> <a class="p" href="/job-next-prev/update/ <%= item.candid%> ">update</a></td>
+             
+             </tr>
+        <%  }); %>
+
+
+       
+
+</div>
+       
+       
+
+</body>
+</html>

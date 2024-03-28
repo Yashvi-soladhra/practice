@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .reg {
+        justify-content: center;
+        display: flex;
+        color: brown;
+        padding-top: 100px;
+
+
+    }
+
+    .submit {
+        background-color: antiquewhite;
+    }
+
+    table {
+        padding-top: 20px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+
+    td {
+        gap: 200px;
+        padding-top: 15px;
+
+    }
+
+    .y1 {
+        border-radius: 5px;
+        height: 20px;
+    }
+
+    .box {
+        text-align: center;
+        font-size: large;
+        padding-top: 10px;
+    }
+
+    .box2 {
+        background-color: rgb(150, 197, 224);
+        width: 400px;
+        padding-left: 30px;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        border-radius: 7px;
+        box-shadow: 10px 10px 5px lightblue;
+
+    }
+
+    a {
+        text-decoration: none;
+         border-radius: 5px;
+    }
+</style>
+
+<body>
+    <form action="/login" method="post">
+       
+
+        <table>
+
+            <tbody class="box2">
+                <h1 class="reg">LOGIN</h1>
+
+                <tr>
+                    <td><label for="">EMAIL</td>
+                    <td><input type="text" id="email" name="email" class="email"></label></td>
+                </tr>
+                <tr>
+                    <td><label for="">PASSWORD</td>
+                    <td>
+                        <input type="password" id="password" name="password" class="required"></label>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <label for="">
+                            <input type="submit" value="LOGIN" class="submit" id="submit">
+                            <a href="http://localhost:8200/forgot">forgot password</a> <br>
+                            <br>
+
+                            
+                                 
+                                    
+                        </label>
+                        New user than first register<a href="http://localhost:8200/show">Register</a> 
+                        <div id="box">
+
+                        </div>
+                    </td>
+                   
+                </tr>
+              
+            </tbody>
+        </table>
+    </form>
+</body>
+
+</html>
+
+<script>
+    let login = document.getElementById("submit");
+    login.addEventListener("click", async function (e) {
+
+        let box = document.getElementById("box");
+        box.innerHTML = "";
+        e.preventDefault();
+
+
+        let email = document.getElementById("email").value
+        let password = document.getElementById("password").value
+
+
+
+
+        let datas = await fetch(`http://localhost:8200/login`,
+            {
+                method: "post",
+                body: JSON.stringify({ email, password }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+
+            });
+
+        let d = await datas.json();
+        console.log(d);
+
+        if (d.success == true) {
+           window.location="/dashboard"
+
+        }
+        else {
+
+            box.innerHTML = d.message
+            box.style.color = "red"
+        }
+
+
+    });
+</script>

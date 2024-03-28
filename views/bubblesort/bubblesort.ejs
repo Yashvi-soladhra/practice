@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    
+</head>
+<body>
+    <H4>YASHVI SOLADHRA</H4>
+    <H4>
+        EMPLOYEE ID =24DEV097
+    </H4>
+    <input type="text"  id="data">
+    <br><br>
+    <button id="button">BubbleSort</button>
+    
+    
+    <script>
+
+        const bubblesort=document.getElementById("button");
+        
+        bubblesort.addEventListener("click",function()
+        {
+            let data=document.getElementById("data").value;
+            let arr1=data.split(",");
+            for( let i=0;i<arr1.length;i++)
+            {
+                arr1[i]=Number(arr1[i])
+            }
+            bubbleSort(arr1)
+            document.write(arr1);
+        } )
+       
+        
+
+    function bubbleSort(items) {  
+    var length = items.length;
+    for (var i = (length - 1); i >= 0; i--) {
+   
+        for (var j = (length - i); j > 0; j--) {
+           
+            if (items[j] < items[j - 1]) {
+              
+                var tmp = items[j];
+                items[j] = items[j - 1];
+                items[j - 1] = tmp;
+            }
+        }
+    }
+    
+}
+
+    </script>
+    
+     
+
+
+    
+</body>
+</html>

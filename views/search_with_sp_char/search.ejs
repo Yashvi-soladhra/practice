@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>yashvi soladhra</h1>
+    <h2>24DEV097</h2>
+    <form action="/spsearch" method="post">
+
+
+        <input type="text" name="select" style="height: 20px; " autofocus>
+        <input type="submit" value="Go">
+
+    </form>
+
+
+
+
+
+
+    <% if (result.length==0){%>
+        <p>no data</p>
+
+        <%}%>
+            <% if(result.length!==0) {%>
+                <%-include("page")%>
+                    <%}%>
+
+
+</body>
+
+</html>

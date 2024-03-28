@@ -1,5 +1,6 @@
 
-let con = require("../../config/page_orderby_filter/connection");
+// let con = require("../../config/page_orderby_filter/connection");
+let con=require("../../config/connection")
 const { Router } = require("express");
 exports.orderfilter=async function(req,res)
 

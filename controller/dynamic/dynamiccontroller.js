@@ -1,4 +1,6 @@
-let con=require("../../config/dynamic/connection")
+// let con=require("../../config/dynamic/connection")
+
+let con=require("../../config/connection")
 const { Router } = require("express");
 
 

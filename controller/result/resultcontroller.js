@@ -1,4 +1,6 @@
-let con = require("../../config/result/connection");
+// let con = require("../../config/result/connection");
+
+ let con=require("../../config/connection")
 
 exports.resultfunction=async(req,res)=>
 {

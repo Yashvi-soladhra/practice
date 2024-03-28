@@ -1,4 +1,6 @@
-let con = require("../../config/pagination_with_asc_dec/connection");
+// let con = require("../../config/pagination_with_asc_dec/connection");
+
+let con=require("../../config/connection")
 const { Router } = require("express");
 exports.pagination=async function(req,res)
 {
