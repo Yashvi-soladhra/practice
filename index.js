@@ -31,7 +31,7 @@ const {dashboard}=require("./controller/dashboard/dashboardcontroller")
 
 const {auth}=require("./middleware/auth")
 const { searchform, searchcombo, searchs, updateform,results} = require("./controller/job-insert-update/indexController")
-const { searchforms, searchcombos, searches, updateforms,resultss,shows} = require("./controller/job-next-prev/indexController")
+const { searchformm, searchcomboo, searches, updateformm,resultss,showw} = require("./controller/job-next-prev/indexController")
 const { Verify } = require("crypto")
 const { register } = require("module");
 
@@ -91,19 +91,15 @@ app.get("/pagefilter/page",auth,orderfilter )
 
 
 // job-insert-update
-app.get("/",auth,searchform)
+app.get("/job",auth,searchform)
 
-app.post("/",auth,searchcombo)
+app.post("/job",auth,searchcombo)
 
 app.get("/update/:id",auth,searchs)
 
 app.post("/update",auth,updateform)
 
 app.get("/table",auth,results)
-
-
-
-
 
 // search with special_char
 app.get("/shchar",auth,spchar);
@@ -113,7 +109,19 @@ app.post("/spsearch",auth,spsearch);
 //  sort
 app.get("/bubblesort",auth,bubblesort)
 
+//next-prev
 
+app.get("/",searchformm)
+
+app.post("/",searchcomboo)
+
+app.get("/updatee/:id",searchformm)
+
+app.post("/updatee",updateformm)
+
+app.get("/tablee",resultss)
+
+app.get("/u/updatee/:id",showw)
 
 
 

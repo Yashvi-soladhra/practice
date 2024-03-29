@@ -7,7 +7,20 @@
     <title>form</title>
     <link rel="stylesheet" href="/public/style.css">
 </head>
-
+<style>
+    .main
+    {
+        color: rgb(14, 74, 53);
+        font-weight: bold;
+       
+    }
+    .btn1
+    {
+        margin-left: 600px;
+        background-color: rgb(117, 170, 152);
+        margin-top: 20px;
+    }
+</style>
 
 <body>
     <div>
@@ -20,7 +33,7 @@
         </div>
       
         <div class="main">
-            <form action="/" method="post" onsubmit="return validate()">
+            <form action="/job" method="post" onsubmit="return validate()">
 
                 <div class="first">
                 <div class="container">
@@ -474,7 +487,7 @@
       
      
 
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" class="btn1">
             </form>
         </div>
     </div>

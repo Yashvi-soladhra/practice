@@ -1,7 +1,7 @@
-
+const moment = require("moment");
 let conn = require("../../config/connection");
 const { Router } = require("express");
-const moment = require("moment");
+
 
 
 
@@ -23,7 +23,7 @@ const basicdetails = async (req, res) => {
         return res.status(500).json({
             return: false,
 
-            messege: "1"
+            message: "1"
         })
     }
 
@@ -56,7 +56,7 @@ const educationdeatils = async (req, res, bid) => {
         return res.status(500).json({
             return: false,
 
-            messege: "2"
+            message: "2"
         })
     }
 
@@ -91,7 +91,7 @@ const workexperience = async (req, res, bid) => {
         return res.status(500).json({
             return: false,
 
-            messege: "3"
+            message: "3"
         })
     }
 
@@ -126,7 +126,7 @@ const languageknown = async (req, res, bid) => {
         return res.status(500).json({
             return: false,
 
-            messege: "4"
+            message: "4"
         })
     }
 
@@ -168,7 +168,7 @@ const technologyknown = async (req, res, bid) => {
         return res.status(500).json({
             return: false,
             message: error.message,
-            messege: "5"
+            message: "5"
         })
     }
 
@@ -203,7 +203,7 @@ const references = async (req, res, bid) => {
         return res.status(500).json({
             return: false,
             message: error.message,
-            messege: "6"
+            message: "6"
         })
     }
 
@@ -225,7 +225,7 @@ const preferences = async (req, res, bid) => {
         return res.status(500).json({
             return: false,
             message: error.message,
-            messege: "7"
+            message: "7"
         })
     }
 
@@ -259,7 +259,7 @@ const updatebasic = async (req, res, bid) => {
     } catch (error) {
         return res.status(500).json({
             message: error.message,
-            messege: "updatebasic"
+            message: "updatebasic"
         })
     }
 
@@ -527,6 +527,36 @@ const updatereference = async (req, res, bid) => {
 
 }
 
+// const updatepreference = async (req, res, bid) => {
+//     try {
+
+//         let { prefloc, noticeperiod, department, expectedctc, currentctc } = req.body
+//         let sql = `update preferences set ? where candid=?`;
+//         let preference = {
+//             "preferedlocation": prefloc,
+//             "noticeperiod": noticeperiod,
+//             "department": department,
+//             "expacted_ctc": expectedctc,
+//             "current_ctc": currentctc
+//         };
+
+//         // console.log(preference);
+
+
+
+
+//         let [result] = await conn.query(sql, [preference, bid])
+
+//         return result;
+//     } catch (error) {
+//         return res.status(500).json({
+//             message: error.message,
+//             message: "updatepreference"
+//         })
+//     }
+
+// }
+
 const updatepreference = async (req, res, bid) => {
     try {
 
@@ -540,18 +570,18 @@ const updatepreference = async (req, res, bid) => {
             "current_ctc": currentctc
         };
 
-        // console.log(preference);
+     
 
 
 
 
-        let [result] = await conn.query(sql, [preference, bid])
+        let [result] = await con.query(sql, [preference, bid])
 
         return result;
     } catch (error) {
         return res.status(500).json({
             message: error.message,
-            messege: "updatepreference"
+            message: "updatepreference"
         })
     }
 
@@ -559,10 +589,9 @@ const updatepreference = async (req, res, bid) => {
 
 
 
+exports.searchformm = async (req, res) => {
 
-exports.searchforms = async (req, res) => {
-
-    return res.render("job-next-prev/home", {route: "/job", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
+    return res.render("job-next-prev/home", {route: "/", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
         technologyknown: [], reference: [], preference: null, message: ""
 
     })
@@ -572,7 +601,7 @@ exports.searchforms = async (req, res) => {
 
 
 
-exports.searchcombos = async (req, res) => {
+exports.searchcomboo = async (req, res) => {
     try {
         let { fname, currdesignation, email, gender, address, state, lname, dob, phone, relnstatus,
             city, zipcode, sscnameofboard, sscpassingyear, sscpercentage, hscnameofboard, hscpassingyear,
@@ -679,7 +708,7 @@ exports.searchcombos = async (req, res) => {
         return res.status(500).json({
             return: false,
             message: error.message,
-            messege: "9"
+            messeage: "9"
         })
     }
 
@@ -688,7 +717,7 @@ exports.searchcombos = async (req, res) => {
 
 }
 
-exports.searches = async (req, res) => {
+exports.searchh = async (req, res) => {
 
     let id = Number(req.params.id);
 
@@ -703,7 +732,7 @@ exports.searches = async (req, res) => {
     let preference = await getdata(req, res, "preferences", id, "pid")
 
     return res.render("job-next-prev/home", {
-        route: "/job",
+        route: "/",
         basicdetail: basicdetail[0], educationdetial: educationdetial, workexperience: workexperience, languageknown: languageknown,
         technologyknown: technologyknown, reference: reference, preference: preference[0], message: ""
     })
@@ -715,7 +744,7 @@ exports.searches = async (req, res) => {
 
 
 
-exports.updateforms = async (req, res) => {
+exports.updateformm = async (req, res) => {
 
     let { candid, fname, currdesignation, email, gender, address, state, lname, dob, phone, relnstatus,
         city, zipcode, sscnameofboard, sscpassingyear, sscpercentage, hscnameofboard, hscpassingyear,
@@ -745,14 +774,14 @@ exports.updateforms = async (req, res) => {
 
     ) {
         return res.render("job-next-prev/home", {
-            route: "/job/update", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
+            route: "/updatee", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
             technologyknown: [], reference: [], preference: null, message: " fill all field"
         })
     } else {
 
         if (!(lang1 && langcheck1) && !(lang3 && langcheck3) && !(lang2 && langcheck2)) {
             return res.render("job-next-prev/home", {
-                route: "/job/update", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
+                route: "/updatee", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
                 technologyknown: [], reference: [], preference: null, message: "please choose one language"
             })
         }
@@ -761,7 +790,7 @@ exports.updateforms = async (req, res) => {
         for (let i = 0; i < companyname.length; i++) {
             if ((!companyname[i] && (designation[i] || from[i] || to[i])) || (companyname[i] && (!designation[i] || !from[i] || !to[i]))) {
                 return res.render("job-next-prev/home", {
-                    route: "/job/update", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
+                    route: "/updatee", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
                     technologyknown: [], reference: [], preference: null, message: "please fill all field of selected company"
                 })
             }
@@ -771,7 +800,7 @@ exports.updateforms = async (req, res) => {
         for (let i = 0; i < name.length; i++) {
             if ((!name[i] && (contactnum[i] || relation[i])) || (name[i] && (!contactnum[i] || !relation[i]))) {
                 return res.render("job-next-prev/home", {
-                    route: "/job/update", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
+                    route: "/updatee", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
                     technologyknown: [], reference: [], preference: null,
                     message: "please fill all field of selected reference"
                 })
@@ -794,7 +823,7 @@ exports.updateforms = async (req, res) => {
 
         await updatepreference(req, res, candid)
 
-        return res.render("job-next-prev/home", { route:"/job/update",
+        return res.render("job-next-prev/home", { route:"/updatee",
             basicdetail: {}, educationdetial: {}, workexperience: [], languageknown: [],
             technologyknown: [], reference: {}, preference: {}, message: "updated successfully"
         })
@@ -807,11 +836,11 @@ exports.resultss = async (req, res) => {
     let sql = `select * from basicdetails`;
     [result] = await conn.query(sql,)
 
-    res.render("show", { result });
+    res.render("job-next-prev/show", { result });
 
 }
 
-exports.shows=async(req,res)=>
+exports.showw=async(req,res)=>
 {
    
     let id = Number(req.params.id);
@@ -827,7 +856,7 @@ exports.shows=async(req,res)=>
     let preference = await getdata(req, res, "preferences", id, "pid")
 
     return res.json( {
-        route: "/job/update",
+        route: "/updatee",
         basicdetail: basicdetail[0], educationdetial: educationdetial, workexperience: workexperience, languageknown: languageknown,
         technologyknown: technologyknown, reference: reference, preference: preference[0], message: ""
     })

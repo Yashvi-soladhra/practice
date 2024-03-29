@@ -565,7 +565,7 @@ const updatepreference = async (req, res, bid) => {
 exports.searchform = async (req, res) => {
 
     return res.render("job-insert-update/home", {
-        route: "/", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
+        route: "/job", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
         technologyknown: [], reference: [], preference: null, message: ""
 
     })
@@ -609,7 +609,7 @@ exports.searchcombo = async (req, res) => {
 
         ) {
             return res.render("job-insert-update/home", {
-                route: "/", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
+                route: "/job", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
                 technologyknown: [], reference: [], preference: null, message: "missing sum record fill the details "
             })
         }
@@ -617,7 +617,7 @@ exports.searchcombo = async (req, res) => {
 
             if (!(lang1 && langcheck1) && !(lang3 && langcheck3) && !(lang2 && langcheck2)) {
                 return res.render("job-insert-update/home", {
-                    route: "/", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
+                    route: "/job", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
                     technologyknown: [], reference: [], preference: null, message: "please fill one language"
                 })
 
@@ -627,7 +627,7 @@ exports.searchcombo = async (req, res) => {
             for (let i = 0; i < companyname.length; i++) {
                 if ((!companyname[i] && (designation[i] || from[i] || to[i])) || (companyname[i] && (!designation[i] || !from[i] || !to[i]))) {
                     return res.render("job-insert-update/home", {
-                        route: "/", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
+                        route: "/job", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
                         technologyknown: [], reference: [], preference: null, message: " selected company"
                     })
                 }
@@ -637,7 +637,7 @@ exports.searchcombo = async (req, res) => {
             for (let i = 0; i < name.length; i++) {
                 if ((!name[i] && (contactnum[i] || relation[i])) || (name[i] && (!contactnum[i] || !relation[i]))) {
                     return res.render("job-insert-update/home", {
-                        route: "/", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
+                        route: "/job", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
                         technologyknown: [], reference: [], preference: null, message: "selected reference"
                     })
                 }
@@ -653,7 +653,7 @@ exports.searchcombo = async (req, res) => {
 
             if (result.length == 1) {
                 return res.render("job-insert-update/home", {
-                    route: "/", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
+                    route: "/job", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
                     technologyknown: [], reference: [], preference: null, message: "please change email because same email is not valid"
                 })
             }
@@ -681,7 +681,7 @@ exports.searchcombo = async (req, res) => {
 
 
                 return res.render("job-insert-update/home", {
-                    route: "/", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
+                    route: "/job", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
                     technologyknown: [], reference: [], preference: null, message: " inserted "
                 })
             }
@@ -715,7 +715,7 @@ exports.searchs = async (req, res) => {
     let preference = await getdata(req, res, "preferences", id, "pid")
 
     return res.render("job-insert-update/home", {
-        route: "/",
+        route: "/job",
         basicdetail: basicdetail[0], educationdetial: educationdetial, workexperience: workexperience, languageknown: languageknown,
         technologyknown: technologyknown, reference: reference, preference: preference[0], message: ""
     })

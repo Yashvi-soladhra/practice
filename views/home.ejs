@@ -16,12 +16,14 @@
     
     td
     {
+        /* #C2FBD7 */
        
-           background-color: #C2FBD7;
-           text-align: center;
-          border-radius: 50px;
+           background-color:#e6cdcc;
+         
+        text-align: center;
+          border-radius: 20px;
           border-width: 0;
-          box-shadow: rgba(25, 25, 25, 0.04) 0 0 1px 0, rgba(0, 0, 0, 0.1) 0 3px 4px 0;
+          /* box-shadow: rgba(123, 92, 92, 0.04) 0 0 1px 0, rgba(91, 83, 83, 0.1) 0 3px 4px 0; */
           color: #008000;
           cursor: pointer;
         
@@ -30,7 +32,7 @@
           font-size: 1em;
           height: 70px;
           padding: 0 30px;
-          padding-left: 50px;
+          padding-left: 50px; 
           transition: all 200ms;
           box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     }
@@ -41,26 +43,58 @@
     }
     .submit
     {
-        background-color: #8188d7;
+        background-color:#acc295;
+        
         color: white;
         height: 60px;
         width: 100px;
+        display: flex;
+        justify-content: center;
+        margin-left: 600px;
+        margin-top: 50px;
+        font-style: italic;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: x-large;
+        border-radius: 50px;
+     
+       
     }
-    
-      
+    .main
+    {
+        background-color:#acc295;
+        padding: 10px 10px;
+    }
+    table
+    {
+        justify-content: center;
+        display: flex;
+    }
+    .dashboard
+    {
+        padding: 10px 10px;
+    }
+    .d1
+    {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 </style>
 <body>
 
     <table>
 
-        <H1>DASHBOARD</H1>
+       <div class="main">
+        <H1 class="d1">DASHBOARD</H1>
+        <h2>Name :Yashvi Solandhara</h2>
+        <h3>Employee: ID24DEV097</h3>
 
+       </div>     
+       
         <div class="dashboard">
             <tr>
                 <td><a href="/kuku">kuku-cube</a></td>
                 
                 <td><a href="/textacteo">Tec-Tac-Toe</a></td>
-                <td><a href="/">Job-Insert-update</a></td>
+                <td><a href="/job">Job-Insert-update</a></td>
             </tr>
             <tr>
                 <td><a href="/attendance/page">Attendence </a></td>
@@ -78,10 +112,9 @@
     
             <tr>
               
-                <td><a href="/shchar">Search_with_special_char</a></td>
-                <td>
-                    <a href="/pagefilter/page">page_orderby_filter</a>
-                </td>
+                <td><a href="/shchar">Search with special char</a></td>
+                <td><a href="/pagefilter/page">page orderby filter</a></td>
+                <td><a href="/">Ajex insert update</a></td>
             </tr>
             
         </table>
@@ -90,7 +123,7 @@
                 <td></td>
                 <td>
                     
-                        <input type="submit" value="logout" class="submit" id="submit">
+                        <input type="submit" value="Log Out" class="submit" id="submit">
                     
                  
                 </td>

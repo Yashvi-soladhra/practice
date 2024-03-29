@@ -9,6 +9,7 @@ let display=async ()=>
 let datas = await fetch(`http://localhost:8200/u${y}`,
 {
         method: "GET",
+        // body: data,
         headers: {
             "Content-Type": "application/json"
         }
@@ -229,12 +230,14 @@ let hindi=document.getElementById("hindi");
      
 
     });
+    if (d.reference[0]) {
+        document.getElementById("name").value=d.reference[0].person_name;
+        document.getElementById("contactnum").value=d.reference[0].contactnum;
+        document.getElementById("relation").value=d.reference[0].relation
+    
+    }
 
-
-    document.getElementById("name").value=d.reference[0].person_name;
-    document.getElementById("contactnum").value=d.reference[0].contactnum;
-    document.getElementById("relation").value=d.reference[0].relation
-
+  
     if(d.reference[1])
     {
         document.getElementById("ref1").value=d.getElementById[1].refid;
@@ -244,9 +247,7 @@ let hindi=document.getElementById("hindi");
 
     }
 
-    // let hindi=document.getElementById("hindi");
-    // let gujrati=document.getElementById("gujrati");
-    // let english =document.getElementById("english");
+    
      
  
    //pref

@@ -14,6 +14,27 @@
     font-family: ' Arial';
 }
 
+.btn2
+{
+   background-color: rgb(35, 91, 91);
+   /* margin-top: 1px; */
+   border-radius: 5px;
+   color: white;
+   margin-left: 900px;
+   /* justify-content: flex-end; */
+   /* padding-left: 500px; */
+   
+}
+.btn3
+{
+   background-color: rgb(35, 91, 91);
+   margin-top: 5px;
+   border-radius: 5px;
+   color: white;
+   margin-left: 20px;
+   
+   
+}
 .results{
    
     text-align: center;
@@ -24,16 +45,180 @@
 
 .main {
     margin: 15px;
+    color: rgb(14, 74, 53);
 }
 
 fieldset {
     border: 1px solid black;
+    background-color: beige;
 }
 
 .basic {
     display: flex;
 
 }
+.container {
+    width: 100%;
+}
+
+.one,
+.two {
+    width: 50%;
+}
+
+.education {
+    gap: 200px;
+}
+
+.ssc,
+.hsc  {
+    display: flex;
+  
+}
+
+
+.bachelor,
+.master  {
+    display: flex;
+   
+}
+
+.ssc label,.hsc label,.master label,.bachelor label{
+    width: 33.33%;
+}
+
+
+
+.exp {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+
+
+.langtech,.technology{
+    display: flex;
+    width: 100%;
+}
+
+input{
+    padding: 3px 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(11, 10, 10);
+}
+
+select{
+    background-color: rgb(255, 255, 255);
+    padding: 3px 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(160, 153, 153);   
+}
+
+.btn{
+   
+        display: flex;
+        align-content: center;
+        gap: 20px;
+        padding: 0 0 20px;
+    
+}
+
+.lang,
+.tech {
+    width: 50%;
+}
+
+.langdetail {
+    display: flex;
+}
+
+.ref{
+    display: flex;
+    /* gap: 105px; 
+    width: 33.33%; */
+    padding-bottom: 5px;
+}
+
+.ref label{
+    width: 66.33%;
+}
+
+.pref1 {
+    display: flex;
+    gap: 100px;
+    padding-bottom: 5px;
+} 
+
+.pref2 {
+    display: flex;
+    gap: 63px;
+    padding-bottom: 5px;
+}
+
+fieldset
+{
+    width: 100%;
+}
+
+
+
+.second
+{
+    display: none;
+    
+}
+.three
+{
+    display: none;
+  
+}
+.four
+{
+    display: none;
+   
+}
+.five
+{
+    display: none;
+   
+}
+.six
+{
+    display: none;
+   
+}
+#prev
+{
+    visibility: hidden;
+}
+* {
+    
+    box-sizing: border-box;
+    font-family: ' Arial';
+}
+
+.results{
+   
+    text-align: center;
+    font-size: 20px;
+    color: rgb(147, 75, 75);
+}
+
+
+/* .main {
+    margin: 15px;
+} */
+
+/* fieldset {
+    border: 1px solid black;
+} */
+/* 
+.basic {
+    display: flex;
+
+} */
 .container {
     width: 100%;
 }
@@ -170,6 +355,10 @@ fieldset
 {
     visibility: hidden;
 }
+input
+{
+    color: rgb(70, 170, 174);
+}
 
 </style>
 
@@ -180,13 +369,14 @@ fieldset
         <h3 style="text-align: center;">yashvi_soladhra</h2>
         <h4 style="text-align: center;">Employee ID24DEV097</h3>    
         <h2 style="text-align: center;">Job_Application_Form</h3>
-        <div class="results">
-          
-           
-        </div>
-      
+            <div class="results">
+                <% if(message){ %>
+                 <p><%=message%></p>
+                <% } %>
+            </div>
+     
         <div class="main">
-            <form action="/job" method="post" onsubmit="return validate()">
+            <form action="/" method="post" onsubmit="return validate()">
 
                 <div class="first">
                 <div class="container">
@@ -418,17 +608,17 @@ fieldset
             </div>
 
 
-            <div class="four">
+            <div class="four" >
 
            
-                <div class="langtech">
+                <div class="langtech" >
                     <div class="lang">
                         <fieldset>
                             <legend>
                                 <h4>Language Known</h4>
                             </legend>
 
-                            <div class="langdetail">
+                            <div class="langdetail" >
                                 <div>
                                     <input type="checkbox" name="lang1" id="hindi" value="hindi" class="lang1" >
                                     <label for="hindi">Hindi</label>
@@ -459,7 +649,7 @@ fieldset
                                 </div>
                             </div>
 
-                            <div class="langdetail error">
+                            <div class="langdetail error" style="padding-bottom: 20px;">
                                 <div>
                                     <input type="checkbox" name="lang3" value="english" id="english" class="lang1">
                                     <label for="english">English</label>
@@ -567,21 +757,21 @@ fieldset
 
                         <div class="refs">
                             <input type="hidden" name="refid[]" id="ref1">
-                            <div class="ref">
-                                <label for="name">Name:
+                            <div class="ref" style="margin-left: 50px;" >
+                                <label for="name" style="margin-left: 70px;">Name:
                                     <input type="text" name="name[]" id="name"  ></label>
-                                <label for="contactnum">Contact Number:
+                                <label for="contactnum" style="margin-left: 70px;">Contact Number:
                                     <input type="text" name="contactnum[]" id="contactnum" class="refnumber" ></label>
-                                <label for="relation">Relation:
+                                <label for="relation" style="margin-left: 70px;">Relation:
                                     <input type="text" name="relation[]" id="relation"  ></label> <br><br>
                             </div>
                             <input type="hidden" name="refid[]" id="ref2">
-                            <div class="ref">
-                                <label for="name">Name:
+                            <div class="ref" style="margin-left: 50px;">
+                                <label for="name"  style="margin-left: 70px;">Name:
                                     <input type="text" name="name[]" id="name1"   ></label>
-                                <label for="contactnum">Contact Number:
+                                <label for="contactnum" style="margin-left: 70px;">Contact Number:
                                     <input type="text" name="contactnum[]" id="contactnum1" class="refnumber"  ></label>
-                                <label for="relation">Relation:
+                                <label for="relation" style="margin-left: 70px;">Relation:
                                     <input type="text" name="relation[]" id="relation1"  ></label>
                             </div>
                         </div>
@@ -599,13 +789,13 @@ fieldset
                             <h4>Preference</h4>
                         </legend>
                         <div class="pref1">
-                            <label for="prefloc">Prefered Location
+                            <label for="prefloc" style="margin-left: 150px;">Prefered Location
                                 <select name="prefloc" id="prefloc" class="required">
                                     <option value="">Select option</option>
                                     <option value="Ahmedabad" >Ahmedabad</option>
                                     <option value="Rajkot" >Rajkot</option>
                                 </select></label>
-                            <label for="noticeperiod">Notice Period:
+                            <label for="noticeperiod" >Notice Period:
                                 <input type="text" name="noticeperiod" id="noticeperiod" class="required"  ></label>
                             <label for="department">Department
                                 <select name="department" id="department" class="required">
@@ -618,7 +808,7 @@ fieldset
 
 
                         <div class="pref2">
-                            <label for="expectedctc">Expected CTC
+                            <label for="expectedctc"  style="margin-left: 150px;">Expected CTC
                                 <input type="text" name="expectedctc" id="expectedctc" class="required"  ></label>
                             <label for="currentctc">Current CTC
                                 <input type="text" name="currentctc" id="currentctc" class="required"  ></label>
@@ -632,8 +822,8 @@ fieldset
             </div>
 
             <div class="btn1" id=" btn1">
-                <input type="submit" id="prev"  value="prev">
-                <input type="submit"  id="next" value="next" >
+                <input type="submit" id="prev"  value="PREV" class="btn3">
+                <input type="submit"  id="next" value="NEXT"  class="btn2">
      
     </div>
 

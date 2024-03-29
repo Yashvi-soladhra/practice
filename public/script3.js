@@ -540,12 +540,12 @@ next.addEventListener("click", async function (e) {
             for (let c of new FormData(form)) {
                 data.append(c[0], c[1])
             }
-            let url = "http://localhost:8200/job"
+            let url = "http://localhost:8200"
             if (window.location.pathname != "/") {
-                url += "/job/update"
+                url += "/updatee"
             }
             else {
-                url += "/job"
+                url += "/"
             }
             let datas = await fetch(url,
                 {

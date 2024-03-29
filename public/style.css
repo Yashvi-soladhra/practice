@@ -72,8 +72,8 @@ fieldset {
 
 input{
     padding: 3px 5px;
-    /* border-radius: 5px; */
-    border: 1px solid rgb(11, 10, 10);
+    border-radius: 5px;
+    /* border: 1px solid rgb(11, 10, 10); */
 }
 
 select{
@@ -88,7 +88,10 @@ select{
         display: flex;
         align-content: center;
         gap: 20px;
+        border-radius: 5px;
+        display: flex;
         padding: 0 0 20px;
+        
     
 }
 
