@@ -96,13 +96,12 @@ exports.login = async (req, res) => {
 
   let sql = `select * from users where email="${email}" and isactive=1`;
   let [result] = await con.query(sql);
-  // console.log(result);
+  
   if (result.length == 0) {
     
     return res.json({ success: false, message: "not match " })
   
-
-    }
+}
     
 
     password += result[0].salt;

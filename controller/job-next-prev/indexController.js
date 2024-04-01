@@ -527,35 +527,6 @@ const updatereference = async (req, res, bid) => {
 
 }
 
-// const updatepreference = async (req, res, bid) => {
-//     try {
-
-//         let { prefloc, noticeperiod, department, expectedctc, currentctc } = req.body
-//         let sql = `update preferences set ? where candid=?`;
-//         let preference = {
-//             "preferedlocation": prefloc,
-//             "noticeperiod": noticeperiod,
-//             "department": department,
-//             "expacted_ctc": expectedctc,
-//             "current_ctc": currentctc
-//         };
-
-//         // console.log(preference);
-
-
-
-
-//         let [result] = await conn.query(sql, [preference, bid])
-
-//         return result;
-//     } catch (error) {
-//         return res.status(500).json({
-//             message: error.message,
-//             message: "updatepreference"
-//         })
-//     }
-
-// }
 
 const updatepreference = async (req, res, bid) => {
     try {

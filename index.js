@@ -111,17 +111,17 @@ app.get("/bubblesort",auth,bubblesort)
 
 //next-prev
 
-app.get("/",searchformm)
+app.get("/",auth,searchformm)
 
-app.post("/",searchcomboo)
+app.post("/",auth,searchcomboo)
 
-app.get("/updatee/:id",searchformm)
+app.get("/updatee/:id",auth,searchformm)
 
-app.post("/updatee",updateformm)
+app.post("/updatee",auth,updateformm)
 
-app.get("/tablee",resultss)
+app.get("/tablee",auth,resultss)
 
-app.get("/u/updatee/:id",showw)
+app.get("/u/updatee/:id",auth,showw)
 
 
 
