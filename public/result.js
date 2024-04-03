@@ -30,7 +30,7 @@ let showdata = async (d) =>
     document.getElementById("dob").value=d.basicdetail.dob;
     document.getElementById("email").value=d.basicdetail.email;
     document.getElementById("phone").value=d.basicdetail.phone;
-    // document.getElementById("gender").value=d.basicdetail.;
+    
 
     if (d.basicdetail.gender=="Male")
     {
@@ -81,12 +81,11 @@ let showdata = async (d) =>
         document.getElementById("masterpercentage").value=d.educationdetial[3].percentage;
     }
 
-let hindi=document.getElementById("hindi");
+    let hindi=document.getElementById("hindi");
     let gujrati=document.getElementById("gujrati");
     let english =document.getElementById("english");
     d.languageknown.forEach(a => {
-        if(a.language=="hindi")
-        {
+        if(a.language=="hindi"){
             hindi.checked=true; 
             let lang=document.getElementsByName("langcheck1[]")
             if(a.canread==1)

@@ -1,6 +1,3 @@
-
-
-exports.bubblesort=async function(req,res)
-{
+exports.bubblesort=async function(req,res){
     res.render("bubblesort/bubblesort");
 }

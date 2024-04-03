@@ -19,18 +19,12 @@
                 span.style.margin = "0 5px"
             }
         });
-
-
-       
-    }
-
-
+}
    let y= document.getElementById("submit");
-
-   y.addEventListener("click", async function(e)
+    y.addEventListener("click", async function(e)
    {
         e.preventDefault();
-        console.log("j");
+        // console.log("j");
         if (validate()) {
             let username=document.getElementById(username).value
             let email=document.getElementById(email).value
@@ -38,11 +32,6 @@
             let password=document.getElementById(password).value
             let conformpassword=document.getElementById(conformpassword).value
            
-
-            console.log(username);
-          
-
-
             let datas = await fetch(`http://localhost:8200/y`,
             {
                 method: "post",

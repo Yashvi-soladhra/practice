@@ -1,0 +1,303 @@
+
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+
+.tab {
+  float: left;
+
+  background-color: #f1f1f1;
+  width: 30%;
+  height: 300px;
+}
+
+
+.tab button {
+  display: block;
+  background-color: inherit;
+  
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  
+  width: 70%;
+  border-left: none;
+  height: 300px;
+  color: blue;
+}
+
+
+.header2 >a
+{
+    margin-left: 50px;
+    text-decoration: none;
+    /* text-decoration: none;
+   margin-left: 400px;
+  text-decoration: none; */
+  color: rgb(31, 97, 182);
+ /* align-items: end; */
+  font-size: large;
+  text-align: end;
+  text-align: center;
+  justify-content: center;
+
+  
+}
+
+
+.container
+{
+    max-width: 1170px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+.row
+{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    padding: 10px;
+}
+.row-7
+{
+    display: flex;
+    
+    margin: 0 -15px;
+    padding: 10px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+.col
+{
+    /* width: 66.666%; */
+    width: calc(100%/2);
+    padding: 0 15px;
+}
+.col-7
+{
+    /* width: 66.666%; */
+    /* width: 300px; */
+    padding: 0 15px;
+    min-width: 300px;
+    
+}
+.hh
+{
+    /* justify-items: center; */
+    text-align: center;
+   color: #0A2259;
+   /* padding-top: 100px; */
+   text-align: left;
+   
+}
+.btn
+{
+   
+background-color:#F2A33A;
+
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  /* text-decoration: none;
+  display: inline-block; */
+  font-size: 16px;
+  margin: 4px 2px;
+  
+}
+.btn1
+{
+   
+border: 1px solid #0A2259;
+
+  color: #0A2259;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  
+}
+.btn2
+{
+   
+background-color:#F2A33A;
+
+  color: white;
+  padding: 15px 70px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  
+}
+.col1
+{
+    /* width: 66.666%; */
+    width: calc(100%/5);
+    padding: 15px 0px;
+    
+}
+.row1
+{
+    display: flex;
+    flex-wrap: wrap; 
+     /* margin: 0 -15px;  */
+     align-items: center;
+    padding: 10px;
+}
+.col-2
+{
+    /* width: 66.666%; */
+    width: calc(100%/2);
+    /* padding: 0 15px; */
+    
+}
+.col-3
+{
+    /* width: 66.666%; */
+    width: calc(100%/2);
+    /* padding: 0 15px; */
+    line-height: 30px;
+    
+}
+.h3
+
+{
+    color: #6A88B6;
+}
+.col-3>p
+{
+    color: #AAAAAA;
+}
+.p1
+
+{
+    text-align:center ;
+    justify-content: center;
+    color: #0A2259;
+   
+    font-size: 40px;
+   padding-left: 200px;
+   padding-right: 200px;
+}
+.row2
+{
+    display: flex;
+    /* flex-wrap: wrap;  */
+     margin: 0 -15px; 
+     align-items: center;
+    /* padding: 10px; */
+}
+.col-4
+{
+    /* width: 66.666%; */
+    width: calc(100%/4);
+    /* padding: 0 15px; */
+    line-height: 30px;
+    background:#EBE9DE;
+    width: 300px;
+    /* border: 2px solid black; */
+ color: #6A88B6;
+    padding:    15px;
+    margin: 10px;
+   
+}
+.col-5
+{
+    /* width: 66.666%; */
+    width: calc(100%/4);
+    /* padding: 0 15px; */
+    line-height: 30px;
+ 
+    width: 300px;
+    /* border: 2px solid black; */
+    color: #6A88B6;
+    padding:   15px;
+    margin: 10px;
+   
+}
+.col-4:hover
+{
+    background-color: #0A2259;
+    color: white;
+   
+}
+.y1:hover
+{
+    background-color: #6A88B6;
+    color:white ;
+    /* padding:15px;
+    margin: 10px; */
+   
+}
+.h4:hover
+{
+    border: 1px solid rgb(236, 234, 234); 
+    background-color: white;
+    border-radius: 50px;
+}
+.p2
+{
+    text-align: center;
+    /* color:#0A2259;  */
+}
+.p2:hover
+{
+    color: white;
+}
+.btn3
+{
+   
+   
+    border: 1px solid  #0A2259;
+  color:  #0A2259;;
+  padding: 15px 70px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 3px 2px;
+  
+}
+.btn3:hover
+{
+    background-color: #F2A33A;
+}
+
+.col-f
+{
+    
+    width: calc(100%/4);
+   
+    line-height: 25px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    
+}
+.y2
+{
+    padding-left: 150px;
+}
+.y3
+{
+    padding-left: 80px;
+    
+}
+.col-f
+{
+    font-size: x-large;
+    color: white;
+}

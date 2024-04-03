@@ -12,7 +12,7 @@ exports.pagination=async function(req,res)
 
     let rpp=10;
     let lastpage=Math.floor(totalrecord/rpp);
-    console.log(lastpage);
+
 
     let page=Number(req.query.page)||1;
     let orderby=req.query.orderby||"sid";

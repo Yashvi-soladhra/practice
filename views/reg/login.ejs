@@ -12,8 +12,6 @@
         display: flex;
         color: brown;
         padding-top: 100px;
-
-
     }
 
     .submit {
@@ -30,20 +28,16 @@
     td {
         gap: 200px;
         padding-top: 15px;
-
     }
-
     .y1 {
         border-radius: 5px;
         height: 20px;
     }
-
     .box {
         text-align: center;
         font-size: large;
         padding-top: 10px;
     }
-
     .box2 {
         background-color: rgb(150, 197, 224);
         width: 400px;
@@ -52,24 +46,18 @@
         padding-bottom: 20px;
         border-radius: 7px;
         box-shadow: 10px 10px 5px lightblue;
-
     }
-
     a {
         text-decoration: none;
-         border-radius: 5px;
+        border-radius: 5px;
     }
 </style>
 
 <body>
     <form action="/login" method="post">
-       
-
-        <table>
-
-            <tbody class="box2">
+      <table>
+         <tbody class="box2">
                 <h1 class="reg">LOGIN</h1>
-
                 <tr>
                     <td><label for="">EMAIL</td>
                     <td><input type="text" id="email" name="email" class="email"></label></td>
@@ -87,21 +75,16 @@
                     <td>
                         <label for="">
                             <input type="submit" value="LOGIN" class="submit" id="submit">
-                            <a href="http://localhost:8200/forgot">forgot password</a> <br>
                             <br>
-
-                            
-                                 
-                                    
-                        </label>
-                        New user than first register<a href="http://localhost:8200/show">Register</a> 
+                            <a href="http://localhost:8200/forgot" style="font-family:'Times New Roman', Times, serif;">Forgot Password</a> <br>
+                            <br>
+                         </label>
+                         Register First  <a href="http://localhost:8200/show">Register</a>
                         <div id="box">
 
                         </div>
                     </td>
-                   
                 </tr>
-              
             </tbody>
         </table>
     </form>
@@ -117,13 +100,8 @@
         box.innerHTML = "";
         e.preventDefault();
 
-
         let email = document.getElementById("email").value
         let password = document.getElementById("password").value
-
-
-
-
         let datas = await fetch(`http://localhost:8200/login`,
             {
                 method: "post",
@@ -138,15 +116,14 @@
         console.log(d);
 
         if (d.success == true) {
-           window.location="/dashboard"
-
+            box.innerHTML = d.message
+            box.style.color = "green"
+            window.location = "/dashboard"
         }
         else {
 
             box.innerHTML = d.message
             box.style.color = "red"
         }
-
-
     });
 </script>

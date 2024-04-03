@@ -65,11 +65,7 @@
 
     <div class="container">
         <form action="/fpassword" method="post">
-
-
             <table>
-
-
                 <div>
                     <tbody class="box2">
                         <h2 class="reg">FORGOT</h2>
@@ -87,23 +83,14 @@
 
                                     </div>
                                 </label>
-
                             </td>
-
                         </tr>
-
-
                     </tbody>
                 </div>
-
             </table>
         </form>
     </div>
-
-
-
 </body>
-
 
 </html>
 
@@ -121,7 +108,7 @@
 
         let email = document.getElementById("email").value
 
-        let data = await fetch(`http://localhost:8100/fpassword`,
+        let data = await fetch(`http://localhost:8200/fpassword`,
             {
                 method: "post",
                 body: JSON.stringify({ email }),
@@ -133,13 +120,13 @@
         console.log(d);
 
 
-       
+
         if (document.querySelector(".verify")) {
             document.querySelector(".verify").innerHTML = ""
         }
 
         if (d.success == true) {
-         
+
             let div = document.createElement("div")
             div.classList.add("verify")
             div.innerHTML = `
@@ -156,11 +143,11 @@
 
 <tr>
     <td><label for="">password</td>
-    <td><input type="text" id="password" name="password" class="password"></label></td>
+    <td><input type="password" id="password" name="password" class="password"></label></td>
 </tr>
 <tr>
     <td><label for="">conform password</td>
-    <td><input type="text" id="conformpassword" name="conformpassword" class=""></label></td>
+    <td><input type="password" id="conformpassword" name="conformpassword" class=""></label></td>
 </tr>
 <tr>
     <td></td>
@@ -183,51 +170,50 @@
 
 
         } else {
-          
+
             box.innerHTML = d.message
             box.style.color = "red"
 
         }
 
         let success = document.getElementById("update");
-    console.log(success);
-    success.addEventListener("click", async function (e) {
-        console.log("h");
-        let box2 = document.getElementById("box2");
-        box2.innerHTML = "";
-        e.preventDefault();
+        console.log(success);
+        success.addEventListener("click", async function (e) {
+            console.log("h");
+            let box2 = document.getElementById("box2");
+            box2.innerHTML = "";
+            e.preventDefault();
 
-        let password = document.getElementById("password").value
-        
-        let conformpassword = document.getElementById("conformpassword").value
-       
-        let emails = document.getElementById("emails").value
-        console.log(emails);
-        let data = await fetch(`http://localhost:8100/setpassword`,
-            {
-                method: "post",
-                body: JSON.stringify({ password, conformpassword, emails }),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            });
-        let d = await data.json();
-        console.log(d);
+            let password = document.getElementById("password").value
 
+            let conformpassword = document.getElementById("conformpassword").value
+
+            let emails = document.getElementById("emails").value
+            console.log(emails);
+            let data = await fetch(`http://localhost:8200/setpassword`,
+                {
+                    method: "post",
+                    body: JSON.stringify({ password, conformpassword, emails }),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+            let d = await data.json();
+            console.log(d);
+
+        });
+        if (d.success == true) {
+            box2.innerHTML = d.message
+            box2.style.color = "green"
+
+        }else {
+
+            box2.innerHTML = d.message
+            box2.style.color = "red"
+        }
     });
-    if (d.success == true) {
-        box2.innerHTML = d.message
-        box2.style.color = "green"
-
-    }
-    else {
-
-        box2.innerHTML = d.message
-        box2.style.color = "red"
-    }
-    });
 
 
-  
+
 
 </script>

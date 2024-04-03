@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project-1</title>
+
+    <link rel="stylesheet" href="/public/dashboard.css">
+</head>
+
+<body>
+
+    <table>
+
+       <div class="main">
+        <H1 class="d1">DASHBOARD</H1>
+        <h2>Name :Yashvi Solandhara</h2>
+        <h3>Employee: ID24DEV097</h3>
+
+       </div>     
+       
+        <div class="dashboard">
+            <tr>
+                <td><a href="/kuku">kuku-cube</a></td>
+                
+                <td><a href="/textacteo">Tec-Tac-Toe</a></td>
+                <td><a href="/job">Job-Insert-update</a></td>
+            </tr>
+            <tr>
+                <td><a href="/attendance/page">Attendence </a></td>
+           
+                <td><a href="/dynamic">Daynamic-table</a></td>
+           
+                <td><a href="/bubblesort">Bobble sort</a></td>
+            </tr>
+           
+            <tr>
+                <td><a href="/events">Events</a></td>
+               <td><a href="/result/page">Result</a></td> 
+                <td><a href="/pagination_asc_dec/pages">Pagination</a></td>
+            </tr>
+    
+            <tr>
+              
+                <td><a href="/shchar">Search with special char</a></td>
+                <td><a href="/pagefilter/page">page orderby filter</a></td>
+                <td><a href="/">Ajex insert update</a></td>
+            </tr>
+
+            <tr>
+                <td><a href="/html1">webpage</a></td>
+                <td><a href="/html2">webpage2</a></td>
+            </tr>
+            
+        </table>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Log Out" class="submit" id="submit">
+                </td>
+               
+            </tr>
+        </tbody>
+        </div>
+       
+</body>
+</html>
+<script>
+    let logout = document.getElementById("submit");
+    logout.addEventListener("click", async function (e) {
+
+    e.preventDefault();
+        let datas = await fetch(`http://localhost:8200/logout`,
+            {
+                method: "get",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+
+            });
+
+        let d = await datas.json();
+        console.log(d);
+
+        if (d.success == true) {
+          window.location="/log"
+
+        }
+        else {
+
+            box.innerHTML = d.message
+            box.style.color = "red"
+        }
+ });
+</script>

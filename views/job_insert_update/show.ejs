@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="/public/insert_update_table.css">
+<body>
+    
+<div class="div1">
+    <h1 class="job">Job_App_data_show</h1>
+    <table>
+        <tr class="tab">
+            
+          
+             <td>Firstname</td>
+             <td>Lastname</td>
+             <td>Designation</td>
+             <td>Email</td>
+             <td>Dob</td>
+             <td>Phone</td>
+             <td>Gender</td>
+             <td>Reln_status</td>
+             <td>Address</td>
+             <td>City</td>
+             <td>State</td>
+             <td>zipcode</td>
+             <td>SHOW</td>
+            </tr>
+    
+
+        </tr>
+        <% result.forEach(item => 
+        {%>
+         <tr>
+             
+             <td><%= item.fname%></td>
+             <td><%= item.lname%></td>
+             <td><%= item.designation%></td>
+             <td><%= item.email%></td>
+             <td><%= item.dob%></td>
+             <td><%= item.phone%></td>
+             <td><%= item.gender%></td>
+             <td><%= item.reln_status%></td>
+             <td><%= item.address%></td>
+             <td><%= item.city%></td>
+             <td><%= item.state%></td>
+             <td><%= item.zipcode%></td>
+             <td> <a class="shows" href="/update/<%= item.candid%> ">show</a></td>
+             
+             </tr>
+        <%  }); %>
+
+
+       
+
+</div>
+       
+       
+
+</body>
+</html>

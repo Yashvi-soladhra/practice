@@ -5,78 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<style>
-    .disable {
-        pointer-events: none;
-    }
+<link rel="stylesheet" href="/public/attendance.css">
 
-    table,
-    tr,
-    td {
-        border: 1px solid black;
-        border-collapse: collapse;
-
-    }
-
-
-    a {
-        text-decoration: none;
-        color: black;
-        font-size: 17px;
-
-    }
-
-    .box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    button {
-        padding: 5px;
-    }
-
-    table {
-        margin: 20px;
-        width: 90%;
-    }
-
-    td {
-        padding: 5px;
-        width: 20px;
-
-    }
-
-    .s1 {
-        text-align: center;
-        color: brown;
-    }
-
-    .p1 {
-        background-color: #C2FBD7;
-        font-size: larger;
-        color: black;
-        font-style: italic;
-        font-weight: 100;
-        text-align: center;
-    }
-
-    .h1 {
-        text-align: center;
-    }
-
-    /* .p2
-    {
-        text-align: center;
-    } */
-</style>
-</style>
 
 <body>
     <h1 class="h1">yashvi soladhra</h1>
     <select name="select" id="select" class="select1" style="margin: 20px;">
-        <!-- <option value="">select option</option> -->
+        
         <option data-month="<%=month%>" value="2023-12-30">December-2023</option>
         <option data-month="<%=month%>" value="2024-01-31">Jan-2024</option>
         <option data-month="<%=month%>" value="2024-02-28">Fab-2024</option>
@@ -87,10 +22,7 @@
 
         <tr class="p1">
             <td>studentid</td>
-
             <td>studentname</td>
-            <!-- <td>studentatendence</td> -->
-
             <td>attendence</td>
             <td>percentage of attendance</td>
 
@@ -113,11 +45,7 @@
                 <%= item.percentage%>
 
             </td>
-
-
-
-
-        </tr>
+         </tr>
         <% }); %>
             </tr>
 
@@ -154,11 +82,8 @@
                 <a href="/attendance/page/?page=<%=lastpage%>&select=<%=select%>"> >> </a>
             </button>
         </div>
-
-
-
-
 </body>
+</html>
 <script>
     let select = document.getElementById("select");
     let selects = select.options;

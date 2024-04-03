@@ -5,90 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <link rel="stylesheet" href="/public/page_orderby_filter.css">
        
     
 </head>
 
-<style>
-    .disable {
-        pointer-events: none;
-    }
 
-    table,
-    tr,
-    td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-    
-
-    a {
-        text-decoration: none;
-        color: black;
-        font-size: 17px;
-        
-    }
-    .box
-    {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-    }
-    button
-    {
-        padding: 5px;
-    }
-    table
-    {
-        margin: 20px;
-    }
-    td
-    {
-        padding: 5px;
-    }
-    .s1
-    {
-        text-align: center;
-        color: brown;
-    }
-    .p1
-    {
-        background-color:#C2FBD7;
-        font-size: larger;
-        color: black;
-        font-style: italic;
-        font-weight: 100;
-        text-align: center;
-    }
-    
-</style>
 
 <body>
-
-  
-
-     
-
-
     <table>
-        <h1 class="s1">STUDENT  INFORMATION</h1>
+        <h1 class="studinfo">STUDENT  INFORMATION</h1>
         <tr class="p1">
 
-            <td ><a href="/pagefilter/page?orderby=sid&sort=<%=orderby === "sid"&& orderby1 ==='asc'?'desc':'asc' %>">ID </a></td>
-           
-            <td><a href="/pagefilter/page?orderby=f_name&sort=<%=orderby === "f_name"&& orderby1 ==='asc'?'desc':'asc' %>">First name  </a></td> 
-            <td><a href="/pagefilter/page?orderby=l_name&sort=<%=orderby === "l_name"&& orderby1 ==='asc'?'desc':'asc' %>">Last name</a></td>
-            <td><a href="/pagefilter/page?orderby=m_name&sort=<%=orderby === "m_name"&& orderby1 ==='asc'?'desc':'asc' %>">Middal name</a></td>
-            <td><a href="/pagefilter/page?orderby=city&sort=<%=orderby === "city"&& orderby1 ==='asc'?'desc':'asc' %>">City</a></td>
-            <td><a href="/pagefilter/page?orderby=Email&sort=<%=orderby === "Email"&& orderby1 ==='asc'?'desc':'asc' %>">Email</a></td>
-            <td><a href="/pagefilter/page?orderby=Country&sort=<%=orderby === "Country"&& orderby1 ==='asc'?'desc':'asc' %>">Country</a></td>
-            <td><a href="/pagefilter/page?orderby=Address&sort=<%=orderby === "Address"&& orderby1 ==='asc'?'desc':'asc' %>">Address</a></td>
-            <td><a href="/pagefilter/page?orderby=State&sort=<%=orderby === "State"&& orderby1 ==='asc'?'desc':'asc' %>">State</a></td>
-            <td><a href="/pagefilter/page?orderby=ZipCode&sort=<%=orderby === "ZipCode"&& orderby1 ==='asc'?'desc':'asc' %>">ZipCode</a></td>
-            <td><a href="/pagefilter/page?orderby=enroll_no&sort=<%=orderby === "enroll_no"&& orderby1 ==='asc'?'desc':'asc' %>">Enroll no</a></td>
-            <td><a href="/pagefilter/page?orderby=age&sort=<%=orderby === "age"&& orderby1 ==='asc'?'desc':'asc' %>">Age</a></td>
+            <td ><a href="/pagefilter/page?orderby=sid&sort=<%=orderby === "sid"&& orderby1 ==='asc'?'desc':'asc' %>">ID⇳ </a></td>
+            <td><a href="/pagefilter/page?orderby=f_name&sort=<%=orderby === "f_name"&& orderby1 ==='asc'?'desc':'asc' %>">First name⇳ </a></td> 
+            <td><a href="/pagefilter/page?orderby=l_name&sort=<%=orderby === "l_name"&& orderby1 ==='asc'?'desc':'asc' %>">Last name⇳ </a></td>
+            <td><a href="/pagefilter/page?orderby=m_name&sort=<%=orderby === "m_name"&& orderby1 ==='asc'?'desc':'asc' %>">Middal namev=⇳</a></td>
+            <td><a href="/pagefilter/page?orderby=city&sort=<%=orderby === "city"&& orderby1 ==='asc'?'desc':'asc' %>">City⇳ </a></td>
+            <td><a href="/pagefilter/page?orderby=Email&sort=<%=orderby === "Email"&& orderby1 ==='asc'?'desc':'asc' %>">Email⇳ </a></td>
+            <td><a href="/pagefilter/page?orderby=Country&sort=<%=orderby === "Country"&& orderby1 ==='asc'?'desc':'asc' %>">Country⇳ </a></td>
+            <td><a href="/pagefilter/page?orderby=Address&sort=<%=orderby === "Address"&& orderby1 ==='asc'?'desc':'asc' %>">Address⇳ </a></td>
+            <td><a href="/pagefilter/page?orderby=State&sort=<%=orderby === "State"&& orderby1 ==='asc'?'desc':'asc' %>">State⇳ </a></td>
+            <td><a href="/pagefilter/page?orderby=ZipCode&sort=<%=orderby === "ZipCode"&& orderby1 ==='asc'?'desc':'asc' %>">ZipCode⇳ </a></td>
+            <td><a href="/pagefilter/page?orderby=enroll_no&sort=<%=orderby === "enroll_no"&& orderby1 ==='asc'?'desc':'asc' %>">Enroll no⇳ </a></td>
+            <td><a href="/pagefilter/page?orderby=age&sort=<%=orderby === "age"&& orderby1 ==='asc'?'desc':'asc' %>">Age⇳ </a></td>
 
         </tr>
         <% result.forEach(item=>
@@ -133,15 +73,9 @@
                 </td>
             </tr>
             <% }); %>
+        </table>
 
-
-
-
-    </table>
-
-
-
-    <div class="box">
+<div class="box">
 
 <div>
     <button class=<%=page==1? "disable" :"" %> >
@@ -171,12 +105,7 @@
         <a href="/pagefilter/page/?page=<%=lastpage%>&select=<%=select%>&orderby=<%=orderby%>&orderby1=<%=orderby1%>"> >> </a>
     </button>
 </div>
-
-
-
-   
-     
-        <script>
+       <script>
 
         let select = document.getElementById("select");
         let selects = select.options;
@@ -192,15 +121,6 @@
         }
 
     }
-
-
-
-
-    </script>
-
-
-   
+</script>
 </body>
-
-
 </html>

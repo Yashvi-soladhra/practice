@@ -1,4 +1,3 @@
-exports.dashboard=async function(req,res)
-{
-    res.render("home")
+exports.dashboard=async function(req,res){
+    res.render("dashboard/home")
 }
