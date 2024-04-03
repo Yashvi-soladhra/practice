@@ -11,7 +11,6 @@ app.use("/public",express.static(path.join(__dirname,"/public")))
 app.use(express.urlencoded({ extended: true }))
 var jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
-
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
@@ -27,11 +26,10 @@ const {resultfunction,resultitemfunction} = require("./controller/result/resultc
 const {spchar,spsearch}=require("./controller/search_with_sp_char/searchcontroller");
 const {bubblesort}=require("./controller/bubble_sort/bubble_sort")
 const {dashboard}=require("./controller/dashboard/dashboardcontroller")
-
-
 const {auth}=require("./middleware/auth")
 const { searchform, searchcombo, searchs, updateform,results} = require("./controller/job-insert-update/indexController")
 const { searchformm, searchcomboo, searches, updateformm,resultss,showw} = require("./controller/job-next-prev/indexController")
+
 const { Verify } = require("crypto")
 const { register } = require("module");
 
@@ -62,6 +60,7 @@ app.get("/logout",logout)
 
 // attendance
 app.get("/attendance/page",auth,functions)
+
 // dynamic table 
 app.get("/dynamic",auth,dynamicfunction)
 app.get("/page",auth,search )
