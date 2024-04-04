@@ -6,7 +6,7 @@ const { Router } = require("express");
 
 
 const basicdetails = async (req, res) => {
-    try {
+   
         let { fname, currdesignation, email, gender, address, state, lname, dob, phone, relnstatus, city, zipcode } = req.body;
 
         let sql = `insert into basicdetails (fname, designation, email, gender, address, state, lname, dob, phone, reln_status, city, zipcode) values (?)`
@@ -18,18 +18,12 @@ const basicdetails = async (req, res) => {
         let bid = result.insertId;
 
         return bid;
-    } catch (error) {
-        return res.status(500).json({
-            return: false,
-
-            message: "1"
-        })
-    }
+    
 
 }
 
 const educationdeatils = async (req, res, bid) => {
-    try {
+    
         let { sscnameofboard, sscpassingyear, sscpercentage, hscnameofboard, hscpassingyear, hscpercentage, bachelorcourse, bachelorpassingyear, bachelorpercentage, mastercourse, masterpassingyear, masterpercentage } = req.body;
 
 
@@ -48,16 +42,10 @@ const educationdeatils = async (req, res, bid) => {
 
         }
         return result;
-    } catch (error) {
-        return res.status(500).json({
-            return: false,
-
-            message: "2"
-        })
-    }
+    
 }
 const workexperience = async (req, res, bid) => {
-    try {
+
         let { companyname, designation, from, to } = req.body;
 
         let sql = `insert into workexperiences (candid,companyname,designation,fromdate,todate) values (?)`;
@@ -76,16 +64,10 @@ const workexperience = async (req, res, bid) => {
             }
         }
         return result;
-    } catch (error) {
-        return res.status(500).json({
-            return: false,
-
-            message: "3"
-        })
-    }
+   
 }
 const languageknown = async (req, res, bid) => {
-    try {
+  
         let { lang1, langcheck1, lang2, langcheck2, lang3, langcheck3 } = req.body;
 
         let result;
@@ -108,16 +90,10 @@ const languageknown = async (req, res, bid) => {
         }
 
         return result;
-    } catch (error) {
-        return res.status(500).json({
-            return: false,
-
-            message: "4"
-        })
-    }
+    
 }
 const technologyknown = async (req, res, bid) => {
-    try {
+ 
         let { php, phptech, mysql, mysqltech, oracle, oracletech, laravel, laraveltech } = req.body;
 
         let sql = `insert into technologyknowns (candid,techname,level) values (?)`;
@@ -148,19 +124,13 @@ const technologyknown = async (req, res, bid) => {
         }
 
         return result;
-    } catch (error) {
-        return res.status(500).json({
-            return: false,
-            message: error.message,
-            message: "5"
-        })
-    }
+    
 
 
 }
 
 const references = async (req, res, bid) => {
-    try {
+
         let { name, contactnum, relation } = req.body;
 
         let sql = `insert into reference (candid,person_name,contactnum,relation) values (?)`;
@@ -180,17 +150,11 @@ const references = async (req, res, bid) => {
             }
         }
         return result;
-    } catch (error) {
-        return res.status(500).json({
-            return: false,
-            message: error.message,
-            message: "6"
-        })
-    }
+    
 }
 
 const preferences = async (req, res, bid) => {
-    try {
+  
         let { prefloc, noticeperiod, department, expectedctc, currentctc } = req.body;
         let sql = `insert into preferences (candid,preferedlocation,noticeperiod,expacted_ctc,current_ctc,department) values (?)`;
 
@@ -198,13 +162,7 @@ const preferences = async (req, res, bid) => {
         let [result] = await conn.query(sql, [preference])
         return result;
 
-    } catch (error) {
-        return res.status(500).json({
-            return: false,
-            message: error.message,
-            message: "7"
-        })
-    }
+   
 }
 
 
@@ -216,28 +174,39 @@ const getdata = async (req, res, table, bid, order) => {
 }
 
 const updatebasic = async (req, res, bid) => {
-    try {
-        let { candid, fname, currdesignation, email, gender, address, state, lname, dob, phone, relnstatus,
-            city, zipcode } = req.body;
-        let basicdetail = {
-            "fname": fname, "designation": currdesignation, "email": email, "gender": gender, "address": address, "state": state,
-            "lname": lname, "dob": new Date(dob), phone: phone, "reln_status": relnstatus, "city": city, "zipcode": zipcode
-        };
+  
+    let { candid, fname, currdesignation, email, gender, address, state, lname, dob, phone, relnstatus,
+        city, zipcode } = req.body;
 
-        let sql = `update basicdetails set ? where candid=?`
-        let [result] = await conn.query(sql, [basicdetail, bid])
-        return result;
-    } catch (error) {
-        return res.status(500).json({
-            message: error.message,
-            message: "updatebasic"
-        })
-    }
+        
+        let basicdetail = {
+            "fname": fname,
+            "designation": currdesignation,
+            "email": email, 
+            "gender": gender,
+             "address": address,
+             "state": state,
+             "lname": lname, 
+             "dob": new Date(dob), 
+             phone: phone,
+             "reln_status": relnstatus,
+             "city": city,
+             "zipcode": zipcode
+    };
+
+    let sql = `update basicdetails set ? where candid=?`
+    let [result] = await conn.query(sql, [basicdetail, bid])
+
+    return result;
+
+
 }
+
+
 
 const updateeducation = async (req, res, bid) => {
 
-    try {
+  
 
 
         let { sscnameofboard, sscpassingyear, sscpercentage, hscnameofboard, hscpassingyear,
@@ -267,17 +236,11 @@ const updateeducation = async (req, res, bid) => {
             }
         }
         return result;
-    } catch (error) {
-        return res.status(500).json({
-            message: error.message,
-            message: "updateeducation"
-        })
-
-    }
+  
 }
 
 const updateworkexperience = async (req, res, bid) => {
-    try {
+ 
 
 
         let { workid, companyname, designation, from, to } = req.body;
@@ -303,16 +266,11 @@ const updateworkexperience = async (req, res, bid) => {
             }
         }
         return result;
-    } catch (error) {
-        return res.status(500).json({
-            message: error.message,
-            message: "updateworkexperience"
-        })
-    }
+    
 }
 
 const updatelanguageknowns = async (req, res, bid) => {
-    try {
+ 
 
 
         let { lang1, langcheck1, lang2, langcheck2, lang3, langcheck3 } = req.body;
@@ -380,20 +338,14 @@ const updatelanguageknowns = async (req, res, bid) => {
         }
 
         return result;
-    } catch (error) {
-        return res.status(500).json({
-            message: error.message,
-            message: "updatelanguageknowns"
-        })
-    }
-
+   
 
 
 
 }
 
 const updatetechnology = async (req, res, bid) => {
-    try {
+ 
 
 
         let { php, phptech, mysql, mysqltech, oracle, oracletech, laravel, laraveltech } = req.body;
@@ -475,16 +427,11 @@ const updatetechnology = async (req, res, bid) => {
         }
 
         return result;
-    } catch (error) {
-        return res.status(500).json({
-            message: error.message,
-            message: "updatetechnology"
-        })
-    }
+   
 }
 
 const updatereference = async (req, res, bid) => {
-    try {
+   
 
 
         let { refid, name, contactnum, relation } = req.body;
@@ -520,13 +467,7 @@ const updatereference = async (req, res, bid) => {
         }
 
         return result;
-    } catch (error) {
-        return res.status(500).json({
-            message: error.message,
-            message: "updatereference"
-        })
-    }
-
+    
 
 
 }
@@ -534,30 +475,25 @@ const updatereference = async (req, res, bid) => {
 
 const updatepreference = async (req, res, bid) => {
 
-    try {
-
-
-        let { prefloc, noticeperiod, department, expectedctc, currentctc } = req.body
-        let sql = `update preferences set ? where candid=?`;
+ 
+        
+   
+    let { prefloc, noticeperiod, department, expectedctc, currentctc } = req.body
+     
         let preference = {
             "preferedlocation": prefloc,
             "noticeperiod": noticeperiod,
             "department": department,
             "expacted_ctc": expectedctc,
             "current_ctc": currentctc
+            
         };
-
-        let [result] = await con.query(sql, [preference, bid])
-
-        return result;
-    } catch (error) {
-        return res.status(500).json({
-            message: error.message,
-            message: "updatepreference"
-        })
-    }
-
-
+        console.log(preference);
+        let sql = `update preferences set ? where candid=?`;
+        
+        let [result] = await conn.query(sql, [preference, bid])
+        console.log(bid);
+   
 }
 
 
@@ -721,37 +657,41 @@ exports.updateformm = async (req, res) => {
             (mastercourse && !bachelorcourse)
 
         ) {
-            return res.render("job_next_prev/home", {
-                route: "/updatee", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
-                technologyknown: [], reference: [], preference: null, message: " fill all field"
-            })
+            
+
+            return res.json({
+                success: false, message: " fill all field"
+            });
+
         } else {
 
             if (!(lang1 && langcheck1) && !(lang3 && langcheck3) && !(lang2 && langcheck2)) {
-                return res.render("job_next_prev/home", {
-                    route: "/updatee", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
-                    technologyknown: [], reference: [], preference: null, message: "please choose one language"
-                })
+
+                return res.json({
+                    success: false,message: "please choose one language"
+                });
+
+               
             }
 
 
             for (let i = 0; i < companyname.length; i++) {
                 if ((!companyname[i] && (designation[i] || from[i] || to[i])) || (companyname[i] && (!designation[i] || !from[i] || !to[i]))) {
-                    return res.render("job_next_prev/home", {
-                        route: "/updatee", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
-                        technologyknown: [], reference: [], preference: null, message: "please fill all field of selected company"
-                    })
+                    return res.json({
+                        success: false,message: "please fill all field of selected company"
+                    });
+                   
                 }
 
             }
 
             for (let i = 0; i < name.length; i++) {
                 if ((!name[i] && (contactnum[i] || relation[i])) || (name[i] && (!contactnum[i] || !relation[i]))) {
-                    return res.render("job_next_prev/home", {
-                        route: "/updatee", basicdetail: null, educationdetial: [], workexperience: [], languageknown: [],
-                        technologyknown: [], reference: [], preference: null,
-                        message: "please fill all field of selected reference"
-                    })
+                    
+                    return res.json({
+                        success: false, message: "please fill all field of selected reference"
+                    });
+                    
                 }
 
             }
@@ -771,16 +711,18 @@ exports.updateformm = async (req, res) => {
 
             await updatepreference(req, res, candid)
 
-            return res.render("job_next_prev/home", {
-                route: "/updatee",
-                basicdetail: {}, educationdetial: {}, workexperience: [], languageknown: [],
-                technologyknown: [], reference: {}, preference: {}, message: "updated successfully"
-            })
+
+
+            return res.json({
+                success: false, message: "updated successfully"
+            });
+            
+            
         }
     } catch (error) {
         return res.status(500).json({
             return: false,
-            message: error.message,
+            message: "updated",
 
         })
     }

@@ -366,10 +366,6 @@ function validate() {
     })
 
 
-
-
-
-    
     let langvalue = [];
     lang.forEach(data => {
         langvalue.push(data.checked);
@@ -434,6 +430,12 @@ function validate() {
 
     })
 
+
+
+
+    
+ 
+
     let techval = []
     tech.forEach(element => {
         techval.push(element.checked)
@@ -484,10 +486,6 @@ function validate() {
         }
     })
 
-
-
-
-
     return a;
 }
 
@@ -495,15 +493,21 @@ function validate() {
 let next = document.querySelector("#next");
 let prev = document.querySelector("#prev");
 var form = document.querySelector('form');
+var box=document.querySelector("#box")
 let i = 0;
+
+
 next.addEventListener("click", async function (e) {
     e.preventDefault();
+    box.innerHTML = "";
+   
     if (next.classList.contains("submit")) {
         if (validate()) {
             let data = new URLSearchParams()
             for (let c of new FormData(form)) {
                 data.append(c[0], c[1])
             }
+           
             let url = "http://localhost:8200"
             if (window.location.pathname != "/") {
                 url += "/updatee"
@@ -522,6 +526,21 @@ next.addEventListener("click", async function (e) {
                 });
             let d = await datas.json();
             console.log(d);
+
+
+
+            if (d.success == true) {
+                
+                box.innerHTML = d.message
+                box.style.color = "red"
+
+            }
+            else {
+
+                box.innerHTML = d.message
+                box.style.color = "red"
+
+            }
         }
     }
 

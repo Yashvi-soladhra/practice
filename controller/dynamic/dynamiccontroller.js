@@ -3,6 +3,9 @@ const { Router } = require("express");
 
 
 exports.search=async function(req,res){
+ 
+ 
+   
     const sql=req.body.textquery || req.cookies.y
    
     let [result]=await con.query(sql)
@@ -19,10 +22,12 @@ exports.search=async function(req,res){
     let[result1]=await con.query(query,[starting,rpp])
     const key=Object.keys(result[0]);
     return res.cookie("y",sql).render("dynamic/page",{result:result1,key:key,page:page,lastpage:lastpage })
+
     
 }
 
 exports.dynamicfunction=async function(req,res){
+    
     let result=[]
     res.render("dynamic/search",{result});
    

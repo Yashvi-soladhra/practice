@@ -17,7 +17,7 @@
      
         <optgroup label="asc"> 
 
-            <!-- <option value="">select option</option> -->
+          
             <option value="sid">ID</option>
             <option value="f_name">FIRST NAME</option>
             <option value="l_name">LAST NAME</option>
@@ -25,7 +25,7 @@
         </optgroup>
     
        <optgroup label="desc">
-            <!-- <option value="">select option</option> -->
+          
             <option value="sid desc">ID</option>
             <option value="f_name desc">FIRST NAME</option>
             <option value="l_name desc">LAST NAME</option>
@@ -47,7 +47,7 @@
             <td>State</td>
             <td>ZipCode</td>
             <td>Enroll no</td>
-            <td>Age</td>
+            
 
         </tr>
         <% result.forEach(item=>
@@ -86,9 +86,7 @@
                 <td>
                     <%= item.enroll_no%>
                 </td>
-                <td>
-                    <%= item.age%>
-                </td>
+               
             </tr>
             <% }); %>
 

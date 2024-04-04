@@ -21,5 +21,4 @@ exports.orderfilter=async function(req,res){
     return res.render("page_orderby_filter/page",{result:result1,page:page,lastpage:lastpage, orderby:orderby,orderby1:orderby1,select:select,month:Number(`${arr[1]}`)})
 
     
-
 };

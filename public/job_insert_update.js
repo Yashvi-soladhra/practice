@@ -7,6 +7,7 @@ function validate() {
     let master = document.querySelectorAll(".master input")
     let exp=document.querySelectorAll(".exp")
     let ref = document.querySelectorAll(".ref")
+ 
     let lang = document.querySelectorAll(".lang1")
     let tech = document.querySelectorAll(".tech1")
     let refnumber = document.querySelectorAll(".refnumber")
@@ -124,7 +125,7 @@ function validate() {
         }
     });
 
-    if (!male.checked && !female.checked && !other.checked) {
+    if (!male.checked && !female.checked ) {
      
         let span = document.createElement("span");
         document.querySelector("label[for=gender]").insertAdjacentElement("afterend", span)

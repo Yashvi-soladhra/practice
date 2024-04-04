@@ -110,6 +110,7 @@ exports.login = async (req, res) => {
 
 
     if (password == hashedpassword) {
+
       let payload = {
         username:result[0].username,
         phone:result[0].phone,
@@ -124,13 +125,7 @@ exports.login = async (req, res) => {
        
          return res.cookie('token',token,{expire:36000+Date.now(),httpOnly:true}).json({ success: true })
   
-        
-     
-  }
-
-
-
-
+        }
 }
 
 exports.password = async (req, res) => {

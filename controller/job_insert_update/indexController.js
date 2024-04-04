@@ -195,8 +195,19 @@ const updatebasic = async (req, res, bid) => {
             city, zipcode } = req.body;
 
             
-            let basicdetail = {"fname": fname,"designation": currdesignation,"email": email, "gender": gender, "address": address,"state": state,
-         "lname": lname, "dob": new Date(dob), phone: phone,"reln_status": relnstatus,"city": city,"zipcode": zipcode
+            let basicdetail = {
+                "fname": fname,
+                "designation": currdesignation,
+                "email": email, 
+                "gender": gender,
+                 "address": address,
+                 "state": state,
+                 "lname": lname, 
+                 "dob": new Date(dob), 
+                 phone: phone,
+                 "reln_status": relnstatus,
+                 "city": city,
+                 "zipcode": zipcode
         };
 
         let sql = `update basicdetails set ? where candid=?`
@@ -216,13 +227,30 @@ const updateeducation = async (req, res, bid) => {
 
     let sql = `update educationdetails set ? where candid=? and degreename=?`;
 
-    let ssc = {"candid": bid,"degreename": "ssc","coursename_nameofboard": sscnameofboard,"passingyear": sscpassingyear, "percentage": sscpercentage
+    let ssc = {
+        "candid": bid,
+        "degreename": "ssc",
+        "coursename_nameofboard": sscnameofboard,
+        "passingyear": sscpassingyear,
+         "percentage": sscpercentage
     };
-    let hsc = { "candid": bid,"degreename": "hsc","coursename_nameofboard": hscnameofboard,"passingyear": hscpassingyear,"percentage": hscpercentage
+    let hsc = { "candid": bid,
+                "degreename": "hsc",
+                "coursename_nameofboard": hscnameofboard,
+                "passingyear": hscpassingyear,
+                "percentage": hscpercentage
     };
-    let bachelor = { "candid": bid,"degreename": "bachelor", "coursename_nameofboard": bachelorcourse,"passingyear": bachelorpassingyear,"percentage": bachelorpercentage
+    let bachelor = { "candid": bid,
+                    "degreename": "bachelor", 
+                    "coursename_nameofboard": bachelorcourse,
+                    "passingyear": bachelorpassingyear,
+                    "percentage": bachelorpercentage
     };
-    let master = { "candid": bid,"degreename": "master","coursename_nameofboard": mastercourse,"passingyear": masterpassingyear,"percentage": masterpercentage
+    let master = { "candid": bid,
+                    "degreename": "master",
+                    "coursename_nameofboard": mastercourse,
+                    "passingyear": masterpassingyear,
+                    "percentage": masterpercentage
     };
 
     let array = [ssc, hsc, bachelor, master];
@@ -468,7 +496,7 @@ const updatepreference = async (req, res, bid) => {
     
 
         let { prefloc, noticeperiod, department, expectedctc, currentctc } = req.body
-        let sql = `update preferences set ? where candid=?`;
+     
         let preference = {
             "preferedlocation": prefloc,
             "noticeperiod": noticeperiod,
@@ -477,7 +505,8 @@ const updatepreference = async (req, res, bid) => {
             "current_ctc": currentctc
         };
 
-        let [result] = await con.query(sql, [preference, bid])
+        let sql = `update preferences set ? where candid=?`;
+        let [result] = await con.query(sql,[preference, bid])
         return result;
    
 
@@ -652,6 +681,7 @@ exports.updateform = async (req, res) => {
         masterpassingyear, masterpercentage, companyname, designation, from, to, lang1, langcheck1, lang2, langcheck2, lang3,
         langcheck3, php, phptech, mysql, mysqltech, oracle, oracletech, laravel, laraveltech, name, contactnum, relation,
         prefloc, noticeperiod, department, expectedctc, currentctc } = req.body
+        
 
     if (!fname || !currdesignation || !email || !gender || !address || !state || !lname || !dob || !phone || !relnstatus || !city || !zipcode
 

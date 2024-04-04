@@ -28,7 +28,7 @@
             <td><a href="/pagefilter/page?orderby=State&sort=<%=orderby === "State"&& orderby1 ==='asc'?'desc':'asc' %>">State⇳ </a></td>
             <td><a href="/pagefilter/page?orderby=ZipCode&sort=<%=orderby === "ZipCode"&& orderby1 ==='asc'?'desc':'asc' %>">ZipCode⇳ </a></td>
             <td><a href="/pagefilter/page?orderby=enroll_no&sort=<%=orderby === "enroll_no"&& orderby1 ==='asc'?'desc':'asc' %>">Enroll no⇳ </a></td>
-            <td><a href="/pagefilter/page?orderby=age&sort=<%=orderby === "age"&& orderby1 ==='asc'?'desc':'asc' %>">Age⇳ </a></td>
+           
 
         </tr>
         <% result.forEach(item=>
@@ -68,9 +68,7 @@
                 <td>
                     <%= item.enroll_no%>
                 </td>
-                <td>
-                    <%= item.age%>
-                </td>
+               
             </tr>
             <% }); %>
         </table>

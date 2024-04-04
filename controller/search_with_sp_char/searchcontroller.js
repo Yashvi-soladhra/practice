@@ -18,107 +18,94 @@ exports.spsearch=async function (req, res) {
 
 
     for (let i = 0; i < str.length; i++) {
-
+      
         if (str[i] == "_") {
             let data = "";
             i++;
 
-            for (let j = i; j < str.length; j++) {
-                if (str[j] != '_' && str[j] != '^' && str[j] != '$' && str[j] != "{" && str[j] != "}" && str[j] != ":") {
-                    data += str[j]
-                }
-                else {
-                    break;
-                }
-            }
-            fname.push(data);
+          while (str[i] != '_' && str[i] != '^' && str[i] != '$' && str[i] != "{" && str[i] != "}" && str[i] != ":" && i<str.length)  
+          {
+                    data += str[i]
+                    i++
+          }
+               
+            
+            fname.push(data.trim());
+            i--;
          }
-        if (str[i] == "^") {
+        else if (str[i] == "^") {
             let data = "";
             i++;
 
-            for (let j = i; j < str.length; j++) {
-                if (str[j] != '_' && str[j] != '^' && str[j] != '$' && str[j] != "{" && str[j] != "}" && str[j] != ":") {
-                    data += str[j]
-                }
-                else {
-                    break;
-                }
+            while (str[i] != '_' && str[i] != '^' && str[i] != '$' && str[i] != "{" && str[i] != "}" && str[i] != ":"  && i<str.length) {
+                data += str[i]
+                i++;
             }
-            lname.push(data);
-            }
+           
 
-
-        if (str[i] == "$") {
-            let data = "";
-            i++;
-
-            for (let j = i; j < str.length; j++) {
-                if (str[j] != '_' && str[j] != '^' && str[j] != '$' && str[j] != "{" && str[j] != "}" && str[j] != ":") {
-                    data += str[j]
-                }
-                else {
-                    break;
-                }
-
-
-            }
-            middalname.push(data);
+            lname.push(data.trim());
+            i--;
          }
-        if (str[i] == "{") {
+
+
+       else if (str[i] == "$") {
             let data = "";
             i++;
 
-            for (let j = i; j < str.length; j++) {
-                if (str[j] != '_' && str[j] != '^' && str[j] != '$' && str[j] != "{" && str[j] != "}" && str[j] != ":") {
-                    data += str[j]
-                }
-                else {
-                    break;
-                }
+            
 
+            while (str[i] != '_' && str[i] != '^' && str[i] != '$' && str[i] != "{" && str[i] != "}" && str[i] != ":"  && i<str.length) {
+                data += str[i]
+                i++;
             }
-            city.push(data);
+           
+            middalname.push(data.trim());
+            i--;
+         }
+        else if (str[i] == "{") {
+            let data = "";
+            i++;
+
+            while (str[i] != '_' && str[i] != '^' && str[i] != '$' && str[i] != "{" && str[i] != "}" && str[i] != ":"  && i<str.length) {
+                data += str[i]
+                i++;
+            }
+           
+
+            
+            city.push(data.trim());
+            i--;
         }
-        if (str[i] == "}") {
+        else if (str[i] == "}") {
             let data = "";
             i++;
 
-            for (let j = i; j < str.length; j++) {
-                if (str[j] != '_' && str[j] != '^' && str[j] != '$' && str[j] != "{" && str[j] != "}" && str[j] != ":") {
-                    data += str[j]
-                }
-                else {
-                    break;
-                }
+            while (str[i] != '_' && str[i] != '^' && str[i] != '$' && str[i] != "{" && str[i] != "}" && str[i] != ":"  && i<str.length) {
+                data += str[i]
+                i++;
             }
-            state.push(data);
+           
+            state.push(data.trim());
+            i--;
 
 
         }
-        if (str[i] == ":") {
+        else if (str[i] == ":") {
             let data = "";
             i++;
 
-            for (let j = i; j < str.length; j++) {
-                if (str[j] != '_' && str[j] != '^' && str[j] != '$' && str[j] != "{" && str[j] != "}" && str[j] != ":") {
-                    data += str[j]
-                }
-                else {
-                    break;
-                }
+            while (str[i] != '_' && str[i] != '^' && str[i] != '$' && str[i] != "{" && str[i] != "}" && str[i] != ":"  && i<str.length) {
+                data += str[i]
+                i++;
             }
-            country.push(data);
+           
+            country.push(data.trim());
+            i--;
         }
     }
-    console.log(fname);
-    console.log(lname);
-    console.log(middalname);
-    console.log(city);
-    console.log(state);
-    console.log(country);
+   
 
-
+console.log(fname);
     sql = `select * from student where `;
 
     if (fname.length != 0) {
@@ -220,10 +207,10 @@ exports.spsearch=async function (req, res) {
     }
     sql = sql + `true`;
 
-    console.log(sql);
+
 
     let [result] = await con.query(sql,);
-    console.log(result);
+ 
 
     return res.render("search_with_sp_char/search", { result: result })
 };
