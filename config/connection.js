@@ -9,6 +9,7 @@ var con = mysql.createConnection
   password: "yashvi",
   database:'project1',
   dateStrings:true
+  
 
 }).promise();
 

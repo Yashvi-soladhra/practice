@@ -80,6 +80,7 @@ addref.addEventListener("click", function (e) {
 
 delref.addEventListener("click", function (e) {
     e.preventDefault()
+    
     let ref = document.querySelectorAll(".ref")
 
     if (ref.length == 3) {

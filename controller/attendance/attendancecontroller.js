@@ -3,6 +3,7 @@ let con=require("../../config/connection")
 
 exports.functions  = async (req, res) => {
     
+        
         select = req.query.select || "2023-12-31";
         arr = select.split("-");
        
