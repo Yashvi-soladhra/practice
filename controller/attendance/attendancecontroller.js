@@ -3,10 +3,11 @@ let con=require("../../config/connection")
 
 exports.functions  = async (req, res) => {
     
-        
+
         select = req.query.select || "2023-12-31";
         arr = select.split("-");
        
+        
         let sql =  `select s.studentid,s.student_name,count(a.attendensh)as attendensh
          FROM attendensmaster2024 as a left JOIN Studentmasterr as s ON s.studentid=a.studentid where a.attendensh=1 and a.sdate between "${arr[0]}-${arr[1]}-01" and "${arr[0]}-${arr[1]}-${arr[2]}" group by  s.studentid,a.attendensh`;
         

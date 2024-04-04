@@ -178,7 +178,7 @@ const updatebasic = async (req, res, bid) => {
     let { candid, fname, currdesignation, email, gender, address, state, lname, dob, phone, relnstatus,
         city, zipcode } = req.body;
 
-        
+      
         let basicdetail = {
             "fname": fname,
             "designation": currdesignation,
