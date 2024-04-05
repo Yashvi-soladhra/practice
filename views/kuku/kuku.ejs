@@ -49,12 +49,12 @@
         let result=document.getElementById("result");
         let button1=document.getElementById("button1");
 
-        (function(){
-            table.style.display="none"
-        })();
+      
         
         button1.addEventListener("click",function(){
+            // button1.style.display="none"
             play();
+
         })
 
         function play() {
@@ -64,10 +64,8 @@
 
         function start(){
             setInterval(function(){
-                if(timer.value>0)
-                {
-                    timer.innerHTML=--timer.value;
-                }
+                if(timer.value>0) {
+                    timer.innerHTML=--timer.value; }
                 else
                 {
                     table.style.display="none"
@@ -78,11 +76,15 @@
                     playagain.addEventListener("click",function(){
                         play1()
                     });
+
+
                     function play1(){
                         timer.value=20;
                         location.reload()
                         result.style.display="none"
+                        button1.style.display="block"
                     }
+
                 }
             },1000);
         }
@@ -109,29 +111,26 @@
      
         function color(){
            const td1=document.querySelectorAll("td")
-           var table1 = Math.floor(Math.random()*256);
+           var table1 =Math.floor(Math.random()*256);
            var table2 =Math.floor(Math.random()*256);
            var table3 =Math.floor(Math.random()*256); 
            var colors=`rgb(${table1}, ${table2}, ${table3})`;
            var colors1=`rgba(${table1}, ${table2}, ${table3}, 0.5)`;
            const random=Math.floor(Math.random()* td1.length);
 
-             for(let i=0; i<td1.length;i++)
+            for(let i=0; i<td1.length;i++)
             {
-                if(i===random)
-                {   
+                if(i===random){   
                     td1[i].style.backgroundColor=colors1;
                 }
-                else
-                {
+                else {
                     td1[i].style.backgroundColor=colors;
                 }
             }
             for(let i=0; i<td1.length;i++)
             {
                 let y=td1[i].addEventListener ("click",function() {
-                        if(i===random && td1[i].style.backgroundColor==colors1)
-                        {
+                        if(i===random && td1[i].style.backgroundColor==colors1) {
                           score1();
                           if (table.rows.length<=9) {
                             add_colums();

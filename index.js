@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use("/public",express.static(path.join(__dirname,"/public")))
 app.use("/img" ,express.static(path.join(__dirname,"/img")))
-app.use(express.urlencoded({ extended: true }))
+
 var jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const cookieParser = require("cookie-parser");

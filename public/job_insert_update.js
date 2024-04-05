@@ -281,7 +281,7 @@ dates.forEach(date => {
         });
     refvalue.forEach(element => {
             if (element !== "") {
-                let validate = data.querySelectorAll(".ref .validate");
+                let validate = data.querySelectorAll(".ref.validate");
                 if (validate.length) {
                     validate.forEach(data => {
                         data.remove()
@@ -310,7 +310,7 @@ dates.forEach(date => {
         if ((ref.name == "contactnum1" || ref.name == "contactnum2") && isNaN(ref.value)) {
             a = false;
             let span = document.createElement("span")
-            ref.insertAdjacentElement("afterend", span)
+            ref.insertAdjacentElement("afterend",span)
             span.classList.add("validate")
             span.textContent = "*it must be number"
             span.style.color = "blue"

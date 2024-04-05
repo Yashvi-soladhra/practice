@@ -4,7 +4,9 @@ const { Router } = require("express");
 
 exports.search=async function(req,res){
  
- 
+    try {
+        
+   
    
     const sql=req.body.textquery || req.cookies.y
    
@@ -22,7 +24,11 @@ exports.search=async function(req,res){
     let[result1]=await con.query(query,[starting,rpp])
     const key=Object.keys(result[0]);
     return res.cookie("y",sql).render("dynamic/page",{result:result1,key:key,page:page,lastpage:lastpage })
+   
 
+   } catch (error) {
+     res.send("wrong query check rigth query")   
+}
     
 }
 
